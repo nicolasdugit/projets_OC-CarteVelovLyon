@@ -1,0 +1,131 @@
+/*-------------------------------------------*/
+/*------------------GENERAL------------------*/
+/*-------------------------------------------*/
+* {
+	box-sizing: border-box;
+}
+html {
+	padding: 0;
+	margin: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+h1, h2 {
+	padding: 0;
+	margin: 0;
+	color: rgb(255,255,255);
+}
+
+
+/*-------------------------------------------*/
+/*------------------HEADER-------------------*/
+/*-------------------------------------------*/
+header {
+	position: fixed;
+	height: 100px;
+	width: 100%;
+	padding: 0 0 0 50px;
+	z-index: 100;
+	background-color: rgb(10,97,172);
+	margin: 0;
+	display: flex;
+
+	align-items: center;
+}
+
+/*-------------------------------------------*/
+/*-----------------CONTENT-------------------*/
+/*-------------------------------------------*/
+.content {
+	position: relative;
+	top: 100px;
+	width: 80%;
+	margin: auto;
+	padding-top: 20px;
+	text-align: center;
+	background-color: rgb(250,227,135);
+}
+
+.content h2 {
+	padding-top: 10px;
+}
+
+/*-------------------------------------------*/
+/*---------------INSTRUCTION-----------------*/
+/*-------------------------------------------*/
+.instruction {
+	margin: auto;
+	width: 95%;
+	height: 400px;
+	background-color: rgb(247,208,47);
+}
+/*-------------------------------------------*/
+/*---------------RESERVATION-----------------*/
+/*-------------------------------------------*/
+.reservation {
+	position: relative;
+	height: 600px;
+
+	display: flex;
+	justify-content: space-around;
+
+	
+	margin: 20px auto;
+}
+
+/*-------------------------------------------*/
+/*-------------------MAP---------------------*/
+/*-------------------------------------------*/
+.map {
+	width: 55%;
+	background-color: rgb(247,208,47);
+
+}
+
+
+/*-------------------------------------------*/
+/*---------------INFORMATION-----------------*/
+/*-------------------------------------------*/
+.information {
+	width: 35%;
+
+	background-color: rgb(247,208,47);
+
+}
+
+
+/*-------------------------------------------*/
+/*------------------FOOTER-------------------*/
+/*-------------------------------------------*/
+footer {
+	height: 100px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	
+	display: flex;
+	align-items: center;
+
+	background-color: rgb(10,97,172);
+	color: rgb(247,208,47)
+}
+
+.timer {
+	margin: auto;
+	width: 50%;
+	height: 40px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 0 10px 0 10px;
+
+	background-color: rgb(250,227,135);
+	text-align: center;
+	color: rgb(10,97,172);
+}
