@@ -63,10 +63,13 @@ header {
 /*---------------INSTRUCTION-----------------*/
 /*-------------------------------------------*/
 .instruction {
-	margin: auto;
-	width: 95%;
-	height: 400px;
-	background-color: rgb(0,180,204);
+	margin:  0 auto;
+	width: 100%;
+}
+
+.slider img {
+	padding: 0;
+	margin: 0;
 }
 /*-------------------------------------------*/
 /*---------------RESERVATION-----------------*/
