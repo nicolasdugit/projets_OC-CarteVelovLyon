@@ -207,11 +207,15 @@ footer {
 /* Sur tous types d'Ã©cran, smartphone */
 @media all and (max-width: 768px) 
 {
+	.move {
+		min-height: 300px;
+	}
 	.move figure {
 		flex-direction: column;
 		align-items:  center;
 	}
 	.move img {
 		width: 90%!important;
+		height: 200px!important;
 	}
 }
