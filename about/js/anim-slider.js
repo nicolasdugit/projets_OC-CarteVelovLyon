@@ -1,5 +1,5 @@
 var slider =document.getElementById("slider");
-var widthSlider = parseFloat(getComputedStyle(slider).width)
+var widthSlider = parseFloat(getComputedStyle(slider).width);
 
 var move = document.getElementById("move");
 var widthMove = parseFloat(getComputedStyle(move).width);
@@ -14,17 +14,17 @@ var xMove = 0;
 buttonBack.addEventListener("click", function () {
 	if (xMove<0) {
 	move.style.left = xMove + 100 + "%";
-	xMove = xMove + widthSlider/widthMove*diapositives.length*100
+	xMove = xMove + widthSlider/widthMove*images.length*100;
 	}
-})
+});
 
 buttonForward.addEventListener("click", function () {
 	// var xMove = (parseFloat(getComputedStyle(move).left));
-	if (Math.abs(xMove) != diapositives.length*100 - 100) {
+	if (Math.abs(xMove) != images.length*100 - 100) {
 	move.style.left = xMove - 100 + "%";
-	xMove = xMove - widthSlider/widthMove*diapositives.length*100;
+	xMove = xMove - widthSlider/widthMove*images.length*100;
 	}
-})
+});
 
 
 document.onkeydown = function handleKeyDown(e){
@@ -44,10 +44,10 @@ document.onkeydown = function handleKeyDown(e){
 		};
 		if (xMove<0 && Direction === "left") {
 		move.style.left = xMove + 100 + "%";
-		xMove = xMove + widthSlider/widthMove*diapositives.length*100
+		xMove = xMove + widthSlider/widthMove*images.length*100
 		}
-		if (Math.abs(xMove) != diapositives.length*100 - 100 && Direction === "right" ) {
+		if (Math.abs(xMove) != images.length*100 - 100 && Direction === "right" ) {
 		move.style.left = xMove - 100 + "%";
-		xMove = xMove - widthSlider/widthMove*diapositives.length*100;
+		xMove = xMove - widthSlider/widthMove*images.length*100;
 		}
-}
+};
