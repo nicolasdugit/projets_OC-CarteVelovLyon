@@ -53,7 +53,7 @@ buttonBack.addEventListener("click", function () {
 buttonForward.addEventListener("click", function () {
 	// var xMove = (parseFloat(getComputedStyle(move).left));
 	console.log(xMove);
-	if (Math.abs(parseFloat(getComputedStyle(move).left)) !== (widthMove-widthSlider) ) {
+	if (Math.abs(xMove) != diapositives.length*100 - 100 ) {
 	move.style.left = xMove - 100 + "%";
 	xMove = xMove - widthSlider/widthMove*diapositives.length*100;
 console.log(xMove);
