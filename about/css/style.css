@@ -76,18 +76,18 @@ header {
 	position: relative;
 	margin: 0;
 	padding: 0;
-	width: 400%;
+	/*width: 400%;*/
 	min-height: 450px;
 	background-color: grey;
 	display: flex;
 }
-.move figure {
+/*.move figure {
 	width: 25%;
 	margin: 0;
 	padding: 0;
 	display: flex;
 	justify-content: space-between;
-}
+}*/
 .move figure img {
 	position: relative;
 	height: 500px;
