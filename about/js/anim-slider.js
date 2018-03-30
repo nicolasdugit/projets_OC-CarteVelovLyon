@@ -20,10 +20,34 @@ buttonBack.addEventListener("click", function () {
 
 buttonForward.addEventListener("click", function () {
 	// var xMove = (parseFloat(getComputedStyle(move).left));
-	console.log(xMove);
-	if (Math.abs(xMove) != diapositives.length*100 - 100 ) {
+	if (Math.abs(xMove) != diapositives.length*100 - 100) {
 	move.style.left = xMove - 100 + "%";
 	xMove = xMove - widthSlider/widthMove*diapositives.length*100;
-console.log(xMove);
 	}
 })
+
+
+document.onkeydown = function handleKeyDown(e){
+		var key = e.keyCode;
+		var Direction;
+		switch (key){
+			case 37:
+				Direction = "left";
+				break;
+
+			case 39:
+				Direction = "right";
+				break;
+				return;
+			default:
+				return;
+		};
+		if (xMove<0 && Direction === "left") {
+		move.style.left = xMove + 100 + "%";
+		xMove = xMove + widthSlider/widthMove*diapositives.length*100
+		}
+		if (Math.abs(xMove) != diapositives.length*100 - 100 && Direction === "right" ) {
+		move.style.left = xMove - 100 + "%";
+		xMove = xMove - widthSlider/widthMove*diapositives.length*100;
+		}
+}
