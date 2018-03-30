@@ -1,31 +1,34 @@
-//LISTE DES DIAPOSITIVES
 
-var diapositives = [
-    {
-        url: "images/diapo1.png",
-        titretitre: "diapo 1",
-        alt: "diapo 1",
-        id: "diapo1"
-    },
-    {
-    	url: "images/diapo2.png",
-        titre: "diapo 2",
-        alt: "diapo 2",
-        id: "diapo2"
-    },
-    {
-        url: "images/diapo3.png",
-        titre: "diapo 3",
-        alt: "diapo 3",
-        id: "diapo3"
-    },
-    {
-        url: "images/diapo4.png",
-        titre: "diapo 4",
-        alt: "diapo 4",
-        id: "diapo4"
-    }
-]
+/*------------------LES DIAPOSITIVES CORRESPONDENT AUX IMAGES--------------------*/
+/*------------------A FAIRE : FAIRE EN SORTE QUE LES DIAPOSITIVES CORRESPONDENT AUX FIGURES--------------------*/
+
+
+// CREATION DIAPOSITIVES
+var Diapo = {
+//initialise la diapo
+	initDiapo: function (src, alt) {
+		this.src = src;
+		this.alt = alt;
+	}
+};
+
+var diapo1 = Object.create(Diapo);
+diapo1.initDiapo("images/diapo1.png","diapo 1");
+var diapo2 = Object.create(Diapo);
+diapo2.initDiapo("images/diapo2.png","diapo 2");
+var diapo3 = Object.create(Diapo);
+diapo3.initDiapo("images/diapo3.png","diapo 3"); 
+var diapo4 = Object.create(Diapo);
+diapo4.initDiapo("images/diapo4.png","diapo 4"); 
+
+// TABLEAU DES DIAPOSITIVES
+var diapositives = []
+diapositives.push(diapo1);
+diapositives.push(diapo2);
+diapositives.push(diapo3);
+diapositives.push(diapo4);
+
+
 var sliderContainer = document.getElementById("move");
 sliderContainer.style.width = diapositives.length*100 + "%";
 
@@ -43,7 +46,10 @@ function creationFigure (diapositive) {
 //FONCTION CREATION IMG
 function creationImage (diapositive) {
 	var imageElt = document.createElement("img");
-	imageElt.src = diapositive.url;
+	imageElt.style.position = "relative";
+	imageElt.style.width = "50%";
+	imageElt.style.height = "400px";
+	imageElt.src = diapositive.src;
 	imageElt.alt = diapositive.alt;
 	
 	return imageElt;
@@ -52,6 +58,7 @@ function creationImage (diapositive) {
 //FONCTION CREATION FIGCAPTION
 function creationFigcaption (diapositive) {
 	var figcaptionElt = document.createElement("figcaption");
+	figcaptionElt.style.position = "relative";
 	figcaptionElt.textContent = diapositive.alt;
 	return figcaptionElt;
 }

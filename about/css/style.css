@@ -89,14 +89,15 @@ header {
 	justify-content: space-between;
 }*/
 .move figure img {
-	position: relative;
-	height: 500px;
-	width: 500px;
+	/*position: relative;*/
+	/*height: 500px;*/
+	width: 50%;
+	max-height: 400px;
 
 }
-.move figure figcaption {
+/*.move figure figcaption {
 	position: relative;
-}
+}*/
 
 .slider-button {
 	position: relative;
