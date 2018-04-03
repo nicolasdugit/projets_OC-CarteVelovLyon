@@ -1,20 +1,28 @@
-// CREATION IMAGE
+var buttonBack = document.getElementById("button-back");
+var buttonForward = document.getElementById("button-forward");
+var buttonStop = document.getElementById("button-stop")
+var carrousel = document.getElementById("carrousel");
+
+// CREATION tableau IMAGE
 var Image = {
-//initialise la diapo
-	initDiapo: function (src, alt) {
+//initialise l'image
+	initImage: function (src, alt, id, figureId, description) {
 		this.src = src;
 		this.alt = alt;
+		this.id = id;
+		this.figureId = figureId;
+		this.description = description;
 	}
 };
 
 var image1 = Object.create(Image);
-image1.initDiapo("images/diapo1.png","diapo 1");
+image1.initImage("images/img1.png","diapo 1", "diapo1", "figure1", "texte explication de la premiere diapo");
 var image2 = Object.create(Image);
-image2.initDiapo("images/diapo2.png","diapo 2");
+image2.initImage("images/img2.png","diapo 2", "diapo2", "figure2", "texte explication de la deuxieme diapo");
 var image3 = Object.create(Image);
-image3.initDiapo("images/diapo3.png","diapo 3"); 
+image3.initImage("images/img3.png","diapo 3", "diapo3", "figure3", "texte explication de la troisieme diapo"); 
 var image4 = Object.create(Image);
-image4.initDiapo("images/diapo4.png","diapo 4"); 
+image4.initImage("images/img4.png","diapo 4", "diapo4", "figure4", "texte explication de la quatrieme diapo"); 
 
 // TABLEAU DES IMAGES
 var images = [];
@@ -24,16 +32,13 @@ images.push(image3);
 images.push(image4);
 
 
-var sliderContainer = document.getElementById("move");
-sliderContainer.style.width = images.length*100 + "%";
-
-
 //FONCTION CREATION FIGURE
 function creationFigure (image) {
 	var figureElt = document.createElement("figure");
-	figureElt.style.width = 100/images.length +"%";
+	figureElt.style.width = "100%";
 	figureElt.style.display = "flex";
 	figureElt.style.justifyContent = 'space-between';
+	figureElt.id = image.id;
 
 	return figureElt;
 }
@@ -46,7 +51,6 @@ function creationImage (image) {
 	imageElt.style.height = "400px";
 	imageElt.src = image.src;
 	imageElt.alt = image.alt;
-	
 	return imageElt;
 }
 
@@ -54,21 +58,70 @@ function creationImage (image) {
 function creationFigcaption (image) {
 	var figcaptionElt = document.createElement("figcaption");
 	figcaptionElt.style.position = "relative";
-	figcaptionElt.textContent = image.alt;
+	figcaptionElt.textContent = image.description;
+	figcaptionElt.id = image.figureId;
 	return figcaptionElt;
 }
 
-// Parcours de la liste des images et ajout d'un élément pour chaque image
-images.forEach( function(image) {
-	var figureDiapo = creationFigure(image);
-	var imageDiapo = creationImage (image);
-	var figcaptionDiapo = creationFigcaption (image);
+//CREATION DU TABLEAU DES DIAPOS
+var diapos =[];
 
-	figureDiapo.appendChild(imageDiapo);
-	figureDiapo.appendChild(figcaptionDiapo);
-	move.appendChild(figureDiapo);
-});
+var i = 0;
+var time = 3000;
 
+var Diaporama = {
 
+	initDiaporama: function() {
 
+		images.forEach( function(image) {
+		var figureDiapo = creationFigure(image);
+		var imageDiapo = creationImage (image);
+		var figcaptionDiapo = creationFigcaption (image);
 
+		figureDiapo.appendChild(imageDiapo);
+		figureDiapo.appendChild(figcaptionDiapo);
+		diapos.push(figureDiapo);
+		});
+
+		carrousel.appendChild(diapos[i]);
+		
+	},
+
+	moveForward: function () {
+		clearInterval(Diaporama.moveAuto);
+		if (i< diapos.length -1) {
+		carrousel.innerHTML = "";
+		carrousel.appendChild(diapos[i+1]);
+		i++;
+		} else {
+			i=0;
+			carrousel.innerHTML = "";
+			carrousel.appendChild(diapos[i]);
+		}
+	},
+
+	moveBack: function () {
+		clearInterval(Diaporama.moveAuto);
+		if (i>0){
+		carrousel.innerHTML = "";
+		carrousel.appendChild(diapos[i-1]);
+		i--;
+		} else {
+			i=diapos.length -1;
+			carrousel.innerHTML = "";
+			carrousel.appendChild(diapos[i]);
+		}
+	},
+
+	moveAuto: function (){
+
+		carrousel.innerHTML = "";
+		carrousel.appendChild(diapos[i]);
+		if (i< diapos.length -1) {
+		i++;
+		}  else {
+			i =0;
+		}
+	},
+
+};
