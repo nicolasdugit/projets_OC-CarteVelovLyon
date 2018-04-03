@@ -81,6 +81,23 @@ header {
 	background-color: grey;
 	display: flex;
 }
+.figure-diapo {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.image-diapo {
+	position: relative;
+	width: 50%;
+	height: 400px;
+
+}
+
+.figcaption-diapo {
+	position: relative;
+	width: 50%;
+}
 
 .slider-button {
 	position: relative;
