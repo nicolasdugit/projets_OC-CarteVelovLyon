@@ -1,12 +1,9 @@
 var buttonBack = document.getElementById("button-back");
 var buttonForward = document.getElementById("button-forward");
-var buttonStop = document.getElementById("button-stop")
-var carrousel = document.getElementById("carrousel");
-
 var imageDiapo = document.getElementById("image-diapo");
 var figcationDiapo = document.getElementById("figcaption-diapo")
 
-// CREATION tableau IMAGE
+// CREATION TABLEAU IMAGE
 var Image = {
 //initialise l'image
 	initImage: function (src, alt, description) {
@@ -32,7 +29,7 @@ images.push(image2);
 images.push(image3);
 images.push(image4);
 
-
+//CREATION DE L'OBJET DIAPORAMA
 var Diaporama = {
 
 	// INITIALISE LE DIAPORAMA
@@ -47,35 +44,28 @@ var Diaporama = {
 			figcationDiapo.textContent = tabImages[0].description;
 		});
 	},
-
-	// DIAPORAMA VERS LA DROITE
+	// METHODE DEPLACEMENT VERS LA DROITE
 	moveForward: function () {
 		if (this.index < this.tabImages.length -1) {
 		this.index++;
+		} else {
+			this.index = 0;
+		}
 		imageDiapo.src = this.tabImages[this.index].src;
 		imageDiapo.alt = this.tabImages[this.index].alt;
 		figcationDiapo.textContent = this.tabImages[this.index].description;
-		} else {
-			this.index = 0;
-			imageDiapo.src = this.tabImages[this.index].src;
-			imageDiapo.alt = this.tabImages[this.index].alt;
-			figcationDiapo.textContent = this.tabImages[this.index].description;
-		}
+		
 	},
-
-	// DIAPORAMA VERS LA GAUCHE
+	// METHODE DEPLACEMENT A VERS LA GAUCHE
 	moveBack: function () {
 		if (this.index > 0 ){
 			this.index--;
-			imageDiapo.src = this.tabImages[this.index].src;
-			imageDiapo.alt = this.tabImages[this.index].alt;
-			figcationDiapo.textContent = this.tabImages[this.index].description;
 		} else {
 			this.index = this.tabImages.length -1;
-			imageDiapo.src = this.tabImages[this.index].src;
-			imageDiapo.alt = this.tabImages[this.index].alt;
-			figcationDiapo.textContent = this.tabImages[this.index].description;
 		}
+		imageDiapo.src = this.tabImages[this.index].src;
+		imageDiapo.alt = this.tabImages[this.index].alt;
+		figcationDiapo.textContent = this.tabImages[this.index].description;
 	},
 
 };

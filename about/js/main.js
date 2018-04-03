@@ -1,13 +1,12 @@
-var diapo1 = Object.create(Diaporama);
-diapo1.initDiaporama(images);
+var slider = Object.create(Diaporama);
+slider.initDiaporama(images);
 
-// Diaporama.initDiaporama();
 buttonForward.addEventListener("click", function () {
-	diapo1.moveForward();
+	slider.moveForward();
 });
 
 buttonBack.addEventListener("click", function () {
-	diapo1.moveBack();
+	slider.moveBack();
 });
 
 document.onkeydown = function handleKeyDown(e){
@@ -15,17 +14,11 @@ document.onkeydown = function handleKeyDown(e){
 		var Direction;
 		switch (key){
 			case 37:
-				diapo1.moveBack()
+				slider.moveBack()
 				break;
 			case 39:
-				diapo1.moveForward();
+				slider.moveForward();
 				break;
 				return;
 		};
 };
-
-
-
-
-
-
