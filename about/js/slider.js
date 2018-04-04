@@ -5,7 +5,7 @@ var imageDiapo = document.getElementById("image-diapo");
 var figcationDiapo = document.getElementById("figcaption-diapo")
 
 // CREATION DE L'OBJET IMAGE
-var Image = {
+var ImageDiaporama = {
 // initialise l'image
 	initImage: function (src, alt, description) {
 		this.src = src;
@@ -14,7 +14,7 @@ var Image = {
 	}
 };
 // CREATION DU TABLEAU DES IMAGES
-var images = [];
+var imagesDiaporama = [];
 
 //CREATION DE L'OBJET DIAPORAMA
 var Diaporama = {
