@@ -40,10 +40,8 @@
 		<section id="reservation" class="reservation">
 			<!-- MAP -->
 			<div id="map" class="map">
-				<h2>Carte de Lyon</h2>
 			</div>
 			<!-- INFORMATION -->
-
 			<div id="information" class="information">
 				<h2>Détails de la Station</h2>
 				<div class="adress" id="adress"></div>
@@ -53,12 +51,14 @@
 		</section>
 	</div>
 
+	<script type="text/javascript" src="about/js/ajax.js"></script>
+	 <script type="text/javascript" src="about/js/markerclusterer.js"></script>
+
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqVRudFf3jl7oDcgK1qF9MCZlNrkKOJEA&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqVRudFf3jl7oDcgK1qF9MCZlNrkKOJEA&callback=Carte.initCarte">
     </script>
 	<script type="text/javascript" src="about/js/slider.js"></script>
 	<script type="text/javascript" src="about/js/carte.js"></script>
-	<script type="text/javascript" src="about/js/info-station.js"></script>
 	<script type="text/javascript" src="about/js/main.js"></script>
 	<footer>
 		<div id="timer" class="timer"><p>1 vélo réservé à la station Nation pour ...</p></div>
