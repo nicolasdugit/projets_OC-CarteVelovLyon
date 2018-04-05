@@ -3,37 +3,36 @@ var statusStation = document.getElementById("station-ouverture");
 var addressStation = document.getElementById("station-adresse");
 var bikeStation = document.getElementById("station-velo-dispo");
 var emptyStation = document.getElementById("station-emplacement-dispo");
+var carteVelov = document.getElementById("map");
 
 var Carte = {
 	markers: [],
 	// Initialisela carte
 	initCarte: function() {
 		var lyon = {lat: 45.75, lng: 4.85};
-		map = new google.maps.Map(document.getElementById('map'), {
+		map = new google.maps.Map(carteVelov, {
     	zoom: 12,
     	center: lyon
     	});
 
 	},
-	initMarker: function (location, info) {
+	initMarker: function (infoStation) {
 		var marker = new google.maps.Marker({
-	        position: location,
-	        map: map,
-	        info: info
+	        position: infoStation.position,
+	        map: map
 	    });
 	    marker.addListener("click", function() {
-	    	nameStation.textContent = this.info.name;
-	    	addressStation.textContent = this.info.address;
-	    	bikeStation.textContent = this.info.available_bikes;
-	    	if (this.info.status === "OPEN") {
+	    	nameStation.textContent = infoStation.name;
+	    	addressStation.textContent = infoStation.address;
+	    	bikeStation.textContent = infoStation.available_bikes;
+	    	if (infoStation.status === "OPEN") {
 	    		statusStation.textContent = "ouverte";
 	    		statusStation.style.color = "green";
 	    	} else {
 	    		statusStation.textContent = "fermée";
 	    		statusStation.style.color = "red";
 	    	}
-	    	emptyStation.textContent = this.info.available_bike_stands;
-
+	    	emptyStation.textContent = infoStation.available_bike_stands;
 	    });
 		this.markers.push(marker);
 	},
