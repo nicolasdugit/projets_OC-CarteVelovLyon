@@ -1,4 +1,4 @@
-// Exécute un appel AjAX GET
+﻿// Exécute un appel AjAX GET
 // Prend en paramètres l'URL cible et la fonction callback appelé en cas de succès
 function ajaxGet(url,callback) {
 	// Création d'une requête HTTP
