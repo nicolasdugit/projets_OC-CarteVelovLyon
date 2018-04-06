@@ -1,14 +1,14 @@
 // CREATION DES IMAGES A L'AIDE DE L'OBJET IMAGE
 var image1 = Object.create(ImageDiaporama);
-image1.initImage("about/images/img1.png","diapo 1", "texte explication de la premiere diapo");
+image1.initImage("about/images/diapo1.png","diapo 1", "Bienvenue sur le site de Résavélo'v, service de location de velo sur la ville de lyon. Première visite ? Suivez le guide pas à pas");
 var image2 = Object.create(ImageDiaporama);
-image2.initImage("about/images/img2.png","diapo 2", "texte explication de la deuxieme diapo");
+image2.initImage("about/images/diapo2.png","diapo 2", "Selectionner votre station Vélo'V. Les marqueurs verts indiquent une station ouverte avec vélo diponible, les rouges une station ouvertes mais sans vélo disponible.");
 var image3 = Object.create(ImageDiaporama);
-image3.initImage("about/images/img3.png","diapo 3", "texte explication de la troisieme diapo"); 
-var image4 = Object.create(ImageDiaporama);
-image4.initImage("about/images/img4.png","diapo 4", "texte explication de la quatrieme diapo"); 
+image3.initImage("about/images/diapo3.png","diapo 3", "Une fois votre station selectionnée, vous pouvez y reserver un vélo en cliquant sur le bouton prevu  cet effet"); 
+// var image4 = Object.create(ImageDiaporama);
+// image4.initImage("about/images/img4.png","diapo 4", "texte explication de la quatrieme diapo"); 
 // MISE EN PLACE DE CHAQUE IMAGE DANS LE TABLEAU IMAGES
-imagesDiaporama.push(image1, image2, image3, image4);
+imagesDiaporama.push(image1, image2, image3);
 
 // CREATION DU SLIDER AVEC L'OBJET DIAPORAMA
 var slider = Object.create(Diaporama);
@@ -22,15 +22,20 @@ buttonForward.addEventListener("click", function () {
 buttonBack.addEventListener("click", function () {
 	slider.moveBack();
 });
+
 document.onkeydown = function handleKeyDown(e){
 	var key = e.keyCode;
 	var Direction;
 	switch (key){
 		case 37:
-			slider.moveBack()
+			slider.moveBack();
+			buttonBack.style.backgroundColor = 'rgb(0,180,204)';
+			setTimeout(slider.colorButton, 150);
 			break;
 		case 39:
 			slider.moveForward();
+			buttonForward.style.backgroundColor = 'rgb(0,180,204)';
+			setTimeout(slider.colorButton, 150);
 			break;
 			return;
 	};

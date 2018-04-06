@@ -13,7 +13,6 @@ body {
 	padding: 0;
 	width: 100%;
 }
-
 h1 {
 	padding: 0;
 	margin: 0;
@@ -24,7 +23,6 @@ h2 {
 	margin: 0;
 	color: rgb(52,56,56);
 }
-
 /*-------------------------------------------*/
 /*------------------HEADER-------------------*/
 /*-------------------------------------------*/
@@ -39,7 +37,6 @@ header {
 	display: flex;
 	align-items: center;
 }
-
 /*-------------------------------------------*/
 /*-----------------CONTENT-------------------*/
 /*-------------------------------------------*/
@@ -51,11 +48,9 @@ header {
 	padding-top: 20px;
 	background-color: rgb(0,95,107);
 }
-
 .content h2 {
 	padding-top: 10px;
 }
-
 /*-------------------------------------------*/
 /*---------------INSTRUCTION-----------------*/
 /*-------------------------------------------*/
@@ -63,20 +58,18 @@ header {
 	margin:  0 auto;
 	width: 100%;
 }
-
 .slider {
 	overflow: hidden;
 	position: relative;
 	width: 100%;
-	height: 600px;
 }
 .carrousel {
 	position: relative;
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	min-height: 450px;
-	background-color: grey;
+	/*min-height: 450px;*/
+	background-color: rgb(0,180,204);
 	display: flex;
 }
 .figure-diapo {
@@ -84,58 +77,73 @@ header {
 	display: flex;
 	justify-content: space-between;
 }
-
 .image-diapo {
 	position: relative;
-	width: 50%;
-	height: 400px;
+	width: 100%;
+	height: 100%;
 }
-
 .figcaption-diapo {
-	position: relative;
-	width: 50%;
+	position: absolute;
+	bottom: 50px;
+	left: 90px;
+	width: 30%;
+	height: 300px;
+	border-radius: 5px;
 	text-transform: uppercase;
 	font-size: 20px;
-}
+	color: white;
+	background-color: rgba(0,180,204,0.8);
+	text-align: left;
+	padding: 20px;
 
+}
 .slider-button {
 	position: relative;
 	margin-top: 20px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 }
-.button-back, .button-forward, .button-stop {
+.button-back, .button-forward {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 20%;
 	min-width: 100px;
 	min-height: 30px;
 	border: 1px black solid;
 	border-radius: 7px;
 	box-shadow: 2px 2px 2px grey;
 	background-color: rgb(0,223,252);
+	color: white;
+	padding: 10px;
 }
-
+.button-back:hover, 
+.button-forward:hover  {
+	background-color: rgb(0,180,204);
+	border-style: inset;
+}
+.button-back:active, 
+.button-forward:active {
+	background-color: rgb(0,223,252);
+	border-style: inset;
+}
 /*-------------------------------------------*/
 /*---------------RESERVATION-----------------*/
 /*-------------------------------------------*/
 .reservation {
 	position: relative;
 	min-height: 600px;
-
 	display: flex;
 	justify-content: space-around;
-
 	margin: 20px auto;
 }
-
 /*-------------------------------------------*/
 /*-------------------MAP---------------------*/
 /*-------------------------------------------*/
 .map {
-	width: 55%;
-	height: 500px;
+	width: 100%;
+	height: 650px;
 	background-color: rgb(0,180,204);
 	margin-bottom: 120px;
 
@@ -146,20 +154,66 @@ iframe{
   height: 440px;
   border: 0;
 }
-
-
 /*-------------------------------------------*/
 /*---------------INFORMATION-----------------*/
 /*-------------------------------------------*/
 .information {
 	width: 35%;
-
 	background-color: rgb(0,180,204);
 	margin-bottom: 120px;
-
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
 }
-
-
+.information h2 {
+	text-transform: uppercase;
+	font-size: 120%;
+	min-height: 50px;
+	text-align: center;
+	padding: 0 5px;
+}
+.station-adresse {
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+.para-info {
+	min-height: 150px;
+	padding: 0 5px;
+}
+.signature {
+	width: 80%;
+	height: 200px;
+	border: 1px solid black;
+	background-color: white;
+	margin-bottom: 20px;
+}
+.bouton-resa {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 30%;
+	height: 55px;
+	background-color: rgb(0,223,252);
+	color: white;
+	border: 2px outset;
+	border-color: rgb(0,180,204);
+	border-radius: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 10px;
+	margin: 0 0 20px 0;
+	cursor: pointer;
+}
+.bouton-resa:hover {
+	background-color: rgb(0,95,107);
+	border-style: inset;
+}
+.bouton-resa:active {
+	background-color: rgb(0,223,252);
+	border-style: inset;
+}
 /*-------------------------------------------*/
 /*------------------FOOTER-------------------*/
 /*-------------------------------------------*/
@@ -175,7 +229,6 @@ footer {
 	background-color: rgb(0,140,158);
 	color: rgb(52,56,56)
 }
-
 .timer {
 	margin: auto;
 	width: 50%;
@@ -191,8 +244,6 @@ footer {
 	text-align: center;
 	color: rgb(52,56,56);
 }
-
-
 /*-------------------------------------------*/
 /*---------------MEDIA QUERIES---------------*/
 /*-------------------------------------------*/
@@ -203,7 +254,6 @@ footer {
 		width: 100%;
 	}
 }
-
 /* Sur tous types d'Ã©cran, smartphone */
 @media all and (max-width: 768px) 
 {
@@ -217,5 +267,18 @@ footer {
 	.image-diapo  {
 		width: 90%!important;
 		height: 200px!important;
+	}
+	.reservation {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+	}
+	.map {
+		margin-bottom: 20px;
+		margin-top: 20px;
+	}
+	.information {
+		width: 100%;
 	}
 }

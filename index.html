@@ -15,7 +15,7 @@
 
 <body>
 	<header>
-		<h1>Réservation Vélo'V</h1>
+		<h1>RésaVélo'V</h1>
 	</header>
 	
 	<div id="content" class="content">
@@ -43,14 +43,21 @@
 			</div>
 			<!-- INFORMATION -->
 			<div id="information" class="information">
-				<h2>Détails de la Station</h2>
-				<p>Vous avez choisi la station : <span id="station-nom" class="station-nom"></span><br>
+				<h2>Station <span id="station-titre" class="station-titre"></span></h2>
+				<span id="station-adresse" class="station-adresse"></span>
+				<p class="para-info">Vous avez choisi la station : <span id="station-nom" class="station-nom"></span><br>
 				Cette station est actuellement <span id="station-ouverture" class="station-ouverture"></span><br>
-				Adresse : <span id="station-adresse" class="station-adresse"></span><br>
+				<span id="station-ferme">
 				Nombre de vélos disponible : <span id="station-velo-dispo" class="station-velo-dispo"></span><br>
 				Emplacement vides : <span id="station-emplacement-dispo" class="station-emplacement-dispo"></span>
+				</span>
 				</p> 
-				<button id="bouton-resa" class="bouton-resa">Réserver</button>
+
+				<div id="bouton-resa" class="bouton-resa"><p>Réserver</p></div>
+
+				<canvas id="signature" class="signature">Votre navigateur ne vous permet pas d'effectuer une réservation sur notre site.</canvas>
+			</div>
+				
 			</div>
 		</section>
 	</div>
@@ -59,15 +66,14 @@
 		<div id="timer" class="timer"><p>1 vélo réservé à la station <span id="station-reserve" class="station-reserve"></span> pour ...</p></div>
 	</footer>
 
-	
 	<script type="text/javascript" src="about/js/ajax.js"></script>
 	<script type="text/javascript" src="about/js/slider.js"></script>
-
 	<script type="text/javascript" src="about/js/carte.js"></script>
 	 <script type="text/javascript" src="about/js/markerclusterer.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqVRudFf3jl7oDcgK1qF9MCZlNrkKOJEA&callback=Carte.initCarte">
     </script>
+	<script type="text/javascript" src="about/js/canvas.js"></script>
 	<script type="text/javascript" src="about/js/main.js"></script>
 </body>
 </html>

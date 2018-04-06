@@ -49,6 +49,10 @@ var Diaporama = {
 		imageDiapo.src = this.tabImages[this.index].src;
 		imageDiapo.alt = this.tabImages[this.index].alt;
 		figcationDiapo.textContent = this.tabImages[this.index].description;
+	},
+	colorButton: function () {
+		buttonBack.style.backgroundColor = 'rgb(0,223,252)';
+		buttonForward.style.backgroundColor = 'rgb(0,223,252)';
 	}
 };
 
