@@ -61,7 +61,7 @@
 				<div id="bouton-resa" class="bouton-resa"><p>Réserver</p></div>
 			
 				<canvas id="signature" class="signature">Votre navigateur ne vous permet pas d'effectuer une réservation sur notre site.</canvas>
-				
+				<div id="bouton-valider" class="bouton-resa"><p>Réserver</p></div>
 				
 			</div>
 				
@@ -70,7 +70,7 @@
 	</div>
 
 	<footer>
-		<div id="timer" class="timer"><p>1 vélo réservé à la station <span id="station-reserve" class="station-reserve"></span> pour ...</p></div>
+		<div id="timer" class="timer"><p>1 vélo réservé à la station <span id="station-reserve" class="station-reserve"></span> pour <span id ="rebours">10</span> sec</p></div>
 	</footer>
 
 	<script type="text/javascript" src="about/js/ajax.js"></script>
@@ -81,6 +81,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqVRudFf3jl7oDcgK1qF9MCZlNrkKOJEA&callback=Carte.initCarte">
     </script>
+    <script type="text/javascript" src="about/js/timeout.js"></script>
 	<script type="text/javascript" src="about/js/main.js"></script>
 </body>
 </html>

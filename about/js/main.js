@@ -57,8 +57,11 @@ ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3
 var canvasSignature = Object.create(Paint);
 canvasSignature.initPaint(canvas);
 
-canvas.addEventListener("mousedown", function () {
+canvas.addEventListener("mousedown", function (e) {
 	painting = true;
+	cursorX = (e.pageX - this.offsetLeft) ;
+	cursorY = (e.pageY - this.offsetTop);
+	canvasSignature.startDraw();
 });
 canvas.addEventListener("mousemove", function (e) {
 	if (painting === true) {
@@ -69,4 +72,14 @@ canvas.addEventListener("mousemove", function (e) {
 })
 canvas.addEventListener("mouseup", function () {
 	painting = false;
+	buttonReserve.style.display = "flex";
+});
+
+buttonReserve.addEventListener("click", function () {
+	buttonReserve.style.display = "none";
+	canvasSignature.erase();
+	canvas.style.display = "none";
+	nameStationReserved.style.display = "inline";
+	timer.style.display = "flex";
+	intervalId = setInterval(diminuerCompteur, 1000);
 });
