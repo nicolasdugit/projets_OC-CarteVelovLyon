@@ -48,15 +48,14 @@ ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3
 
     stationsVelov.forEach( function(station) {
     	carteStationVelov.initMarker(station);
+ 
 	});
     carteStationVelov.clusteringMarker();
 });
 
-
-
+// CREATION DE L'ESPACE SIGNATURE NOMME CANVAS AVEC L'OBJET PAINT
 var canvasSignature = Object.create(Paint);
 canvasSignature.initPaint(canvas);
-
 
 canvas.addEventListener("mousedown", function () {
 	painting = true;

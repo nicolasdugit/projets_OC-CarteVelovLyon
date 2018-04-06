@@ -12,7 +12,6 @@ divInformation.style.display = "none";
 var closedStation = document.getElementById("station-ferme");
 
 
-
 var Carte = {
 	// Initialisela carte
 	initCarte: function() {
@@ -45,7 +44,9 @@ var Marqueur = {
 				buttonActiveCanvas.style.display = "flex";
 				divInformation.style.display = "flex";
 				stationTitle.textContent = infoStation.name;
+				stationTitle.textContent = stationTitle.textContent.split("-")[1];
 				nameStation.textContent = infoStation.name;
+				nameStation.textContent = nameStation.textContent.split("-")[1];
 				addressStation.textContent = infoStation.address;
 				bikeStation.textContent = infoStation.available_bikes;
 			    statusStation.textContent = "ouverte";
