@@ -51,3 +51,23 @@ ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3
 	});
     carteStationVelov.clusteringMarker();
 });
+
+
+
+var canvasSignature = Object.create(Paint);
+canvasSignature.initPaint(canvas);
+
+
+canvas.addEventListener("mousedown", function () {
+	painting = true;
+});
+canvas.addEventListener("mousemove", function (e) {
+	if (painting === true) {
+		cursorX = (e.pageX - this.offsetLeft) ;
+		cursorY = (e.pageY - this.offsetTop);
+		canvasSignature.draw();
+	}
+})
+canvas.addEventListener("mouseup", function () {
+	painting = false;
+});

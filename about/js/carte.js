@@ -42,7 +42,7 @@ var Marqueur = {
 		});
 		marker.addListener("click", function() {
 			if (infoStation.status === "OPEN") {
-				activeCanvas.style.display = "flex";
+				buttonActiveCanvas.style.display = "flex";
 				divInformation.style.display = "flex";
 				stationTitle.textContent = infoStation.name;
 				nameStation.textContent = infoStation.name;
@@ -56,7 +56,7 @@ var Marqueur = {
 				statusStation.style.color = "red";
 			}
 			if (infoStation.available_bikes === 0) {
-				activeCanvas.style.display = "none";
+				buttonActiveCanvas.style.display = "none";
 			}
 
 

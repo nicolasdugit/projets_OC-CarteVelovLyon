@@ -1,31 +1,93 @@
-var activeCanvas = document.getElementById("bouton-resa"); 
+var buttonActiveCanvas = document.getElementById("bouton-resa"); 
 var canvas = document.getElementById("signature");
-var context = canvas.getContext("2d");
+// var context = canvas.getContext("2d");
+
+
+var divContent = document.getElementById("content");
+var divReservation = document.getElementById("reservation");
+
 
 canvas.style.display = "none";
-activeCanvas.addEventListener("click", function () {
+buttonActiveCanvas.addEventListener("click", function () {
+				canvasSignature.erase();
+
 	canvas.style.display = "flex";
-	activeCanvas.style.display = "none";
+	buttonActiveCanvas.style.display = "none";
 })
 
+var Paint = {
+
+	initPaint: function (canvasName) {
+		context = canvasName.getContext("2d");
+		painting = false;	
+	},
+
+	draw: function () {
+		context.lineJoin = 'round';
+		context.lineCap = 'round';
+		context.beginPath();
+		context.moveTo(cursorX, cursorY);
+		context.lineTo(cursorX, cursorY);
+		// context.closePath();
+		context.strokeStyle = "black";
+		context.lineWidth = 5;
+		context.stroke();
+		// this.context.closePath();
+
+		console.log(cursorX);
+		console.log(cursorY);
+
+		console.log(cursorX);
+		console.log(cursorY);
+
+	
+	},
+
+	drawVelol: function () {
+	},
+	erase: function () {
+		context.clearRect(0,0, 300 , 200);
+	 },
+};
 
 
-context.beginPath();
-context.moveTo(131, 119);
-context.bezierCurveTo(131, 126, 126, 131, 119, 131);
-context.lineTo(30, 131);
-context.bezierCurveTo(23, 131, 18, 126, 18, 119);
-context.lineTo(18, 30);
-context.bezierCurveTo(18, 23, 23, 18, 30, 18);
-context.lineTo(119, 18);
-context.bezierCurveTo(126, 18, 131, 23, 131, 30);
-context.lineTo(131, 119);
-context.closePath();
-context.fillStyle = "rgb(23, 145, 167)";
-context.fill();
+// canvas.addEventListener("mousedown", function(e) {
+// 	painting = true;
+	
+// })
 
-context.font = "35px Calibri,Geneva,Arial";
-context.fillStyle = "white";
-context.fillText("velo'V", 25, 115);
+// canvas.addEventListener("mousemove", function (e) {
+// 	if (painting === true) {
+// 		cursorX = (e.pageX - canvas.offsetLeft);
+// 		cursorY = (e.pageY - canvas.offsetTop);
+// 		draw();
+// 	}
+// });
 
+// canvas.addEventListener("mouseup", function () {
+// 	painting = "false";
+// 	// clear();
+// })
+
+// function draw () {
+
+	
+
+	
+	
+
+// 	context.beginPath();
+// 	context.moveTo(cursorX, cursorY);
+// 	context.lineTo(cursorX, cursorY);
+// 	// context.closePath();
+// 	context.strokeStyle = "black";
+// 	context.lineWidth = 5;
+// 	context.stroke();
+
+
+// }
+
+// function clear () {
+// 	context.clearRect(0,0, 300 , 200);
+// }
 
