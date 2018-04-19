@@ -44,13 +44,11 @@ document.onkeydown = function handleKeyDown(e){
 };
 
 var markers = [];
-
 // APPEL DE L'API JCDECAUX
 ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 	stationsVelov = JSON.parse(reponse);
 
 	var marqueur = Object.create(Marqueur);
-
     stationsVelov.forEach( function(station) {
     marqueur.initMarker(station);
 	});
