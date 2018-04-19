@@ -10,6 +10,7 @@ buttonActiveCanvas.addEventListener("click", function () {
 	canvasSignature.erase();
 	canvas.style.display = "flex";
 	buttonActiveCanvas.style.display = "none";
+	resetCompteur();
 })
 
 var Paint = {

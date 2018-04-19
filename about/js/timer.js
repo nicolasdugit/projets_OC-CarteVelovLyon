@@ -8,19 +8,18 @@ var intervalId;
 function diminuerCompteur() {
     // Conversion en nombre du texte du compteur
     var compteur = (rebours.textContent);
-    if (compteur > 1) {
+    if (compteur >= 1) {
    		rebours.textContent = compteur -1 ;	
     } else {
-    	clearInterval(intervalId);
-    	timer.style.display = "none";
-    	divInformation.style.display = "none";
-    	rebours.textContent = 10;
+    	resetCompteur();
+        divInformation.style.display = "none";
+        
     }       
 };
 
-
-
-
-
-
-
+function resetCompteur () {
+    clearInterval(intervalId);
+        timer.style.display = "none";
+        rebours.textContent = 10;
+        buttonActiveCanvas.textContent = "Reserver";
+};

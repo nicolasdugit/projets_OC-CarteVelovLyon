@@ -28,6 +28,7 @@ var Marqueur = {
 	icon: null,
 	
 	initMarker: function (infoStation) {
+		var idStation = infoStation.number;
 
 		if (infoStation.available_bikes>0) {	    
 			this.icon = "about/images/pin-open.png"; 
@@ -43,14 +44,16 @@ var Marqueur = {
 		});
 		
 		marker.addListener("click", function() {
-			var idStation = infoStation.number;
+			if (rebours.textContent < 10) {
+				buttonActiveCanvas.textContent = "Annuler reservation en cours";
+			}
 			ajaxGet("https://api.jcdecaux.com/vls/v1/stations/" + idStation + "?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 				infoSta = JSON.parse(reponse);
 				if (infoSta.status === "OPEN") {
+					closedStation.style.display = "";
 					nameStationReserved.textContent = infoSta.name;
 					nameStationReserved.textContent = nameStationReserved.textContent.split("-")[1];
 					nameStationReserved.style.display = "none";
-					// !!!! ATTENTION PROBLEME
 					buttonActiveCanvas.style.display = "flex";
 					divInformation.style.display = "flex";
 					stationTitle.textContent = infoSta.name;
@@ -61,19 +64,21 @@ var Marqueur = {
 					bikeStation.textContent = infoSta.available_bikes;
 				    statusStation.textContent = "ouverte";
 				    statusStation.style.color = "green";
-				} else if (infoSta.status != "OPEN") {
+				}  
+				if (infoSta.status === "CLOSED") {
 					closedStation.style.display = "none";	
 					divInformation.style.display = "flex";
 					stationTitle.textContent = infoSta.name;
 					stationTitle.textContent = stationTitle.textContent.split("-")[1];
 					nameStation.textContent = infoSta.name;
-					nameStation.textContent = infoSta.textContent.split("-")[1];
+					nameStation.textContent = nameStation.textContent.split("-")[1];
 					addressStation.textContent = infoSta.address;
 					bikeStation.textContent = infoSta.available_bikes;
 					statusStation.textContent = "fermée";
 					statusStation.style.color = "red";
 				}
-				if (infoSta.available_bikes === 0) {
+				else if (infoSta.available_bikes === 0) {
+					closedStation.style.display = "";
 					buttonActiveCanvas.style.display = "none";
 				}
 				emptyStation.textContent = infoSta.available_bike_stands;

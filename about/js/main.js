@@ -80,10 +80,6 @@ canvas.addEventListener("mouseup", function () {
 	buttonReserve.style.display = "flex";
 });
 
-
-
-
-
 buttonReserve.addEventListener("click", function () {
 	buttonReserve.style.display = "none";
 	canvasSignature.erase();
