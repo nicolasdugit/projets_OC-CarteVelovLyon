@@ -29,12 +29,10 @@ var Paint = {
 		context.lineCap = 'round';
 		context.lineTo(cursorX, cursorY);
 		context.strokeStyle = "black";
-		context.lineWidth = 5;
+		context.lineWidth = 3;
 		context.stroke();
 	},
 
-	drawVelol: function () {
-	},
 	erase: function () {
 		context.clearRect(0,0, 300 , 200);
 	 },

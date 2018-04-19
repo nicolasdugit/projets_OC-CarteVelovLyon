@@ -13,8 +13,7 @@ var ImageDiaporama = {
 		this.description = description;
 	}
 };
-// CREATION DU TABLEAU DES IMAGES
-var imagesDiaporama = [];
+
 
 //CREATION DE L'OBJET DIAPORAMA
 var Diaporama = {

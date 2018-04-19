@@ -25,8 +25,8 @@ var Carte = {
 };
 
 var Marqueur = {
-	markers: [],
 	icon: null,
+	
 	initMarker: function (infoStation) {
 		if (infoStation.available_bikes>0) {	    
 			this.icon = "about/images/pin-open.png"; 
@@ -40,12 +40,14 @@ var Marqueur = {
 			    icon: this.icon,
 			    map: map
 		});
+		markers.push(marker);
+
 		marker.addListener("click", function() {
 			if (infoStation.status === "OPEN") {
 				nameStationReserved.textContent = infoStation.name;
 				nameStationReserved.textContent = nameStationReserved.textContent.split("-")[1];
 				nameStationReserved.style.display = "none";
-
+				// !!!! ATTENTION PROBLEME
 				buttonActiveCanvas.style.display = "flex";
 				divInformation.style.display = "flex";
 				stationTitle.textContent = infoStation.name;
@@ -56,24 +58,30 @@ var Marqueur = {
 				bikeStation.textContent = infoStation.available_bikes;
 			    statusStation.textContent = "ouverte";
 			    statusStation.style.color = "green";
-			} else {
+			} else if (infoStation.status != "OPEN") {
 				closedStation.style.display = "none";	
+				divInformation.style.display = "flex";
+				stationTitle.textContent = infoStation.name;
+				stationTitle.textContent = stationTitle.textContent.split("-")[1];
+				nameStation.textContent = infoStation.name;
+				nameStation.textContent = nameStation.textContent.split("-")[1];
+				addressStation.textContent = infoStation.address;
+				bikeStation.textContent = infoStation.available_bikes;
 				statusStation.textContent = "fermée";
 				statusStation.style.color = "red";
 			}
 			if (infoStation.available_bikes === 0) {
 				buttonActiveCanvas.style.display = "none";
 			}
-
-
 			emptyStation.textContent = infoStation.available_bike_stands;
 			canvas.style.display = "none";
 		});
-		this.markers.push(marker);
-	},
+	}
+};
 
-	clusteringMarker: function () {
-		markerCluster = new MarkerClusterer(map, this.markers,
+var clusteringMarker = {
+	initClustering: function () {
+		markerCluster = new MarkerClusterer(map, markers,
         {imagePath: 'about/images/m'});
-	},
+	}
 };

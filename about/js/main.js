@@ -1,3 +1,5 @@
+// CREATION DU TABLEAU DES IMAGES
+var imagesDiaporama = [];
 // CREATION DES IMAGES A L'AIDE DE L'OBJET IMAGE
 var image1 = Object.create(ImageDiaporama);
 image1.initImage("about/images/diapo1.png","diapo 1", "Bienvenue sur le site de Résavélo'v, service de location de velo sur la ville de lyon. Première visite ? Suivez le guide pas à pas");
@@ -29,28 +31,31 @@ document.onkeydown = function handleKeyDown(e){
 	switch (key){
 		case 37:
 			slider.moveBack();
-			buttonBack.style.backgroundColor = 'rgb(0,180,204)';
+			buttonBack.style.backgroundColor = "rgb(0,180,204)";
 			setTimeout(slider.colorButton, 150);
 			break;
 		case 39:
 			slider.moveForward();
-			buttonForward.style.backgroundColor = 'rgb(0,180,204)';
+			buttonForward.style.backgroundColor = "rgb(0,180,204)";
 			setTimeout(slider.colorButton, 150);
 			break;
 			return;
 	};
 };
 
+var markers = [];
+
+// APPEL DE L'API JCDECAUX
 ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 	stationsVelov = JSON.parse(reponse);
 
-	var carteStationVelov = Object.create(Marqueur);
+	var marqueur = Object.create(Marqueur);
 
     stationsVelov.forEach( function(station) {
-    	carteStationVelov.initMarker(station);
- 
+    marqueur.initMarker(station);
 	});
-    carteStationVelov.clusteringMarker();
+
+    clusteringMarker.initClustering();
 });
 
 // CREATION DE L'ESPACE SIGNATURE NOMME CANVAS AVEC L'OBJET PAINT
@@ -63,17 +68,23 @@ canvas.addEventListener("mousedown", function (e) {
 	cursorY = (e.pageY - this.offsetTop);
 	canvasSignature.startDraw();
 });
+
 canvas.addEventListener("mousemove", function (e) {
 	if (painting === true) {
 		cursorX = (e.pageX - this.offsetLeft) ;
 		cursorY = (e.pageY - this.offsetTop);
 		canvasSignature.draw();
 	}
-})
+});
+
 canvas.addEventListener("mouseup", function () {
 	painting = false;
 	buttonReserve.style.display = "flex";
 });
+
+
+
+
 
 buttonReserve.addEventListener("click", function () {
 	buttonReserve.style.display = "none";

@@ -16,7 +16,7 @@ function diminuerCompteur() {
     	divInformation.style.display = "none";
     	rebours.textContent = 10;
     }       
-}
+};
 
 
 
