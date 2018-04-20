@@ -53,6 +53,7 @@ ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3
 
     stationsVelov.forEach( function(station) {
     	marqueur.initMarker(station);
+		
 	});
 
     clusteringMarker.initClustering();
@@ -63,7 +64,7 @@ buttonActiveCanvas.addEventListener("click", function () {
 	canvasSignature.erase();
 	canvas.style.display = "flex";
 	buttonActiveCanvas.style.display = "none";
-	if (rebours.textContent !== "20:00"){
+	if (rebours.textContent !== ""){
 		Timer.resetTimer();
 	}
 });
@@ -92,11 +93,30 @@ canvas.addEventListener("mouseup", function () {
 	buttonReserve.style.display = "flex";
 });
 
+if(typeof sessionStorage!='undefined') {
+  if('time' in sessionStorage) {
+    // alert("Message récupéré");
+    var tempsRestant = sessionStorage.time;
+    Timer.initTimer(tempsRestant);
+    timer.style.display = "flex";
+    
+  } else {
+  	tempsRestant = "20:00";
+  }
+} else {
+  alert("sessionStorage n'est pas supporté");
+}
+
 buttonReserve.addEventListener("click", function () {
     buttonReserve.style.display = "none";
     canvasSignature.erase();
     canvas.style.display = "none";
     nameStationReserved.style.display = "inline";
     timer.style.display = "flex";
-	Timer.initTimer();
+    rebours.textContent = "20:00";
+	Timer.initTimer(tempsRestant);
 });
+
+
+
+

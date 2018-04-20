@@ -1,10 +1,12 @@
 var timer = document.getElementById("timer");
 var rebours = document.getElementById("rebours");
 
+
 var Timer = {
-    initTimer: function () {
-        sec = Number(rebours.textContent.split(':')[1]);
-        min = Number(rebours.textContent.split(':')[0]);
+    initTimer: function (tempsRestant) {
+        this.tempsRestant = tempsRestant;
+        sec = Number(tempsRestant.split(':')[1]);
+        min = Number(tempsRestant.split(':')[0]);
         intervalId = setInterval(this.onTimer, 1000);
     },
     onTimer: function () {
@@ -19,20 +21,22 @@ var Timer = {
                 sec = sec -1;
             }
             if (sec < 10) {
-                rebours.textContent = min + ":0" + sec;
-
+                this.tempsRestant = min + ":0" + sec;
             } else {
-                rebours.textContent = min + ":" + sec;
+                this.tempsRestant = min + ":" + sec;
             }
         } else {
             resetTimer();
             divInformation.style.display = "none";
         }  
+        rebours.textContent = this.tempsRestant;
+        sessionStorage.setItem("time", this.tempsRestant);
     },
     resetTimer: function () {
         clearInterval(intervalId);
         timer.style.display = "none";
-        rebours.textContent = "20:00";
+        tempsRestant = "20:00";
         buttonActiveCanvas.textContent = "Reserver";
     },
 };
+

@@ -24,8 +24,6 @@ var Carte = {
 	},
 };
 
-
-
 var Marqueur = {
 	icon: null,
 
@@ -46,16 +44,17 @@ var Marqueur = {
 		});
 		
 		marker.addListener("click", function() {
-			if (rebours.textContent !== "20:00") {
+			if (rebours.textContent !== "") {
 				buttonActiveCanvas.textContent = "Annuler reservation en cours";
-			}
+			} 
 			ajaxGet("https://api.jcdecaux.com/vls/v1/stations/" + idStation + "?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 				infoSta = JSON.parse(reponse);
 				if (infoSta.status === "OPEN") {
 					closedStation.style.display = "";
+					
 					nameStationReserved.textContent = infoSta.name;
 					nameStationReserved.textContent = nameStationReserved.textContent.split("-")[1];
-					nameStationReserved.style.display = "none";
+				
 					buttonActiveCanvas.style.display = "flex";
 					divInformation.style.display = "flex";
 					stationTitle.textContent = infoSta.name;
@@ -86,6 +85,7 @@ var Marqueur = {
 				emptyStation.textContent = infoSta.available_bike_stands;
 				canvas.style.display = "none";
 			});
+		
 		});
 		markers.push(marker);
 	}
