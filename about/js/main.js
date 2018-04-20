@@ -67,6 +67,7 @@ buttonActiveCanvas.addEventListener("click", function () {
 	if (rebours.textContent !== ""){
 		Timer.resetTimer();
 	}
+
 });
 
 // CREATION DE L'ESPACE SIGNATURE NOMME CANVAS AVEC L'OBJET PAINT
@@ -95,11 +96,10 @@ canvas.addEventListener("mouseup", function () {
 
 if(typeof sessionStorage!='undefined') {
   if('time' in sessionStorage) {
-    // alert("Message récupéré");
+  	nameStationReserved.textContent = sessionStorage.stationNom;
     var tempsRestant = sessionStorage.time;
     Timer.initTimer(tempsRestant);
     timer.style.display = "flex";
-    
   } else {
   	tempsRestant = "20:00";
   }

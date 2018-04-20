@@ -34,6 +34,7 @@ var Timer = {
     },
     resetTimer: function () {
         clearInterval(intervalId);
+        sessionStorage.clear();
         timer.style.display = "none";
         tempsRestant = "20:00";
         buttonActiveCanvas.textContent = "Reserver";

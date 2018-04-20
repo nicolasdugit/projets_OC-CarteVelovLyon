@@ -42,18 +42,33 @@ var Marqueur = {
 			    icon: this.icon,
 			    map: map
 		});
+		var stationNom ;
 		
 		marker.addListener("click", function() {
 			if (rebours.textContent !== "") {
 				buttonActiveCanvas.textContent = "Annuler reservation en cours";
 			} 
+
+
+
+
+
 			ajaxGet("https://api.jcdecaux.com/vls/v1/stations/" + idStation + "?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 				infoSta = JSON.parse(reponse);
 				if (infoSta.status === "OPEN") {
 					closedStation.style.display = "";
 					
+
+
+					if(typeof sessionStorage!='undefined') {
+  						if('time' in sessionStorage) {
+  							nameStationReserved.textContent = sessionStorage.stationNom;
+  						} else {
 					nameStationReserved.textContent = infoSta.name;
 					nameStationReserved.textContent = nameStationReserved.textContent.split("-")[1];
+					this.stationNom = nameStationReserved.textContent;
+					sessionStorage.setItem("stationNom", this.stationNom);
+				} }
 				
 					buttonActiveCanvas.style.display = "flex";
 					divInformation.style.display = "flex";
