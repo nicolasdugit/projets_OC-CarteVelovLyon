@@ -214,6 +214,8 @@ iframe{
 	background-color: rgb(0,223,252);
 	border-style: inset;
 }
+
+
 /*-------------------------------------------*/
 /*------------------FOOTER-------------------*/
 /*-------------------------------------------*/
@@ -234,7 +236,7 @@ footer {
 	width: 50%;
 	height: 40px;
 	
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 

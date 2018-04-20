@@ -43,17 +43,29 @@ document.onkeydown = function handleKeyDown(e){
 	};
 };
 
+
 var markers = [];
 // APPEL DE L'API JCDECAUX
 ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 	stationsVelov = JSON.parse(reponse);
 
 	var marqueur = Object.create(Marqueur);
+
     stationsVelov.forEach( function(station) {
-    marqueur.initMarker(station);
+    	marqueur.initMarker(station);
 	});
 
     clusteringMarker.initClustering();
+    
+});
+
+buttonActiveCanvas.addEventListener("click", function () {
+	canvasSignature.erase();
+	canvas.style.display = "flex";
+	buttonActiveCanvas.style.display = "none";
+	if (rebours.textContent !== "20:00"){
+		Timer.resetTimer();
+	}
 });
 
 // CREATION DE L'ESPACE SIGNATURE NOMME CANVAS AVEC L'OBJET PAINT
@@ -81,10 +93,10 @@ canvas.addEventListener("mouseup", function () {
 });
 
 buttonReserve.addEventListener("click", function () {
-	buttonReserve.style.display = "none";
-	canvasSignature.erase();
-	canvas.style.display = "none";
-	nameStationReserved.style.display = "inline";
-	timer.style.display = "flex";
-	intervalId = setInterval(diminuerCompteur, 1000);
+    buttonReserve.style.display = "none";
+    canvasSignature.erase();
+    canvas.style.display = "none";
+    nameStationReserved.style.display = "inline";
+    timer.style.display = "flex";
+	Timer.initTimer();
 });

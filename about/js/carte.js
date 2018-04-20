@@ -14,19 +14,21 @@ var closedStation = document.getElementById("station-ferme");
 var nameStationReserved = document.getElementById("station-reserve");
 
 var Carte = {
+	lyon: {lat: 45.76, lng: 4.85},
 	// Initialisela carte
 	initCarte: function() {
-		var lyon = {lat: 45.76, lng: 4.85};
 		map = new google.maps.Map(carteVelov, {
     	zoom: 13,
-    	center: lyon
+    	center: this.lyon
     	});
 	},
 };
 
+
+
 var Marqueur = {
 	icon: null,
-	
+
 	initMarker: function (infoStation) {
 		var idStation = infoStation.number;
 
@@ -44,7 +46,7 @@ var Marqueur = {
 		});
 		
 		marker.addListener("click", function() {
-			if (rebours.textContent < 10) {
+			if (rebours.textContent !== "20:00") {
 				buttonActiveCanvas.textContent = "Annuler reservation en cours";
 			}
 			ajaxGet("https://api.jcdecaux.com/vls/v1/stations/" + idStation + "?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
@@ -95,3 +97,7 @@ var clusteringMarker = {
         {imagePath: 'about/images/m'});
 	}
 };
+
+
+
+

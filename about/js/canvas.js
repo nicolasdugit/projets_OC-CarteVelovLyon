@@ -6,12 +6,7 @@ buttonReserve.style.display = "none";
 
 canvas.style.display = "none";
 
-buttonActiveCanvas.addEventListener("click", function () {
-	canvasSignature.erase();
-	canvas.style.display = "flex";
-	buttonActiveCanvas.style.display = "none";
-	resetCompteur();
-})
+
 
 var Paint = {
 
