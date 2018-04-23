@@ -41,3 +41,11 @@ var Timer = {
     },
 };
 
+
+var Reservation = {
+
+    initReservation: function(station) {
+        sessionStorage.setItem("name", station.name)
+        sessionStorage.setItem("time", timeLeft);
+        
+}

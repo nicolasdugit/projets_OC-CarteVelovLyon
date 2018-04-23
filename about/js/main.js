@@ -44,24 +44,17 @@ document.onkeydown = function handleKeyDown(e){
 };
 
 
-var markers = [];
 // APPEL DE L'API JCDECAUX
 ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
-	stationsVelov = JSON.parse(reponse);
-
-	var marqueur = Object.create(Marqueur);
-
-    stationsVelov.forEach( function(station) {
-    	marqueur.initMarker(station);
-		
+	allStation = JSON.parse(reponse);
+    allStation.forEach( function(station) {
+    	Carte.initMarker(station);
 	});
-
-    clusteringMarker.initClustering();
-    
+    Carte.initClustering();
 });
 
 buttonActiveCanvas.addEventListener("click", function () {
-	canvasSignature.erase();
+	Signature.erase();
 	canvas.style.display = "flex";
 	buttonActiveCanvas.style.display = "none";
 	if (rebours.textContent !== ""){
@@ -71,27 +64,25 @@ buttonActiveCanvas.addEventListener("click", function () {
 });
 
 // CREATION DE L'ESPACE SIGNATURE NOMME CANVAS AVEC L'OBJET PAINT
-var canvasSignature = Object.create(Paint);
-canvasSignature.initPaint(canvas);
+Signature.initPaint(canvas);
 
 canvas.addEventListener("mousedown", function (e) {
 	painting = true;
 	cursorX = (e.pageX - this.offsetLeft) ;
 	cursorY = (e.pageY - this.offsetTop);
-	canvasSignature.startDraw();
+	Signature.startDraw();
 });
 
 canvas.addEventListener("mousemove", function (e) {
 	if (painting === true) {
 		cursorX = (e.pageX - this.offsetLeft) ;
 		cursorY = (e.pageY - this.offsetTop);
-		canvasSignature.draw();
+		Signature.draw();
 	}
 });
 
 canvas.addEventListener("mouseup", function () {
-	painting = false;
-	buttonReserve.style.display = "flex";
+	Signature.stopDraw();
 });
 
 if(typeof sessionStorage!='undefined') {
@@ -109,7 +100,7 @@ if(typeof sessionStorage!='undefined') {
 
 buttonReserve.addEventListener("click", function () {
     buttonReserve.style.display = "none";
-    canvasSignature.erase();
+    Signature.erase();
     canvas.style.display = "none";
     nameStationReserved.style.display = "inline";
     timer.style.display = "flex";

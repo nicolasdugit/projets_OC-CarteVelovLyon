@@ -5,18 +5,16 @@ buttonReserve.style.display = "none";
 
 canvas.style.display = "none";
 
-var Paint = {
+var Signature = {
 
 	initPaint: function (canvasName) {
 		context = canvasName.getContext("2d");
 		painting = false;	
 	},
-
 	startDraw: function () {
 		context.beginPath();
 		context.moveTo(cursorX, cursorY);
 	},
-
 	draw: function () {
 		context.lineJoin = 'round';
 		context.lineCap = 'round';
@@ -25,7 +23,10 @@ var Paint = {
 		context.lineWidth = 3;
 		context.stroke();
 	},
-
+	stopDraw: function () {
+		painting = false;
+		buttonReserve.style.display = "flex";
+	},
 	erase: function () {
 		context.clearRect(0,0, 300 , 200);
 	 },
