@@ -1,9 +1,7 @@
 var buttonActiveCanvas = document.getElementById("bouton-resa"); 
 var canvas = document.getElementById("signature");
 var buttonReserve = document.getElementById("bouton-valider");
-buttonReserve.style.display = "none";
 
-canvas.style.display = "none";
 
 var Signature = {
 

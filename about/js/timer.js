@@ -1,13 +1,15 @@
 var timer = document.getElementById("timer");
 var rebours = document.getElementById("rebours");
-
+var bouttonCancel = document.getElementById("bouton-annuler");
 
 var Timer = {
+    isOn: false,
     initTimer: function (tempsRestant) {
         this.tempsRestant = tempsRestant;
         sec = Number(tempsRestant.split(':')[1]);
         min = Number(tempsRestant.split(':')[0]);
         intervalId = setInterval(this.onTimer, 1000);
+        this.isOn = true;
     },
     onTimer: function () {
         if (min === 0 && sec === 0 ) {
@@ -38,14 +40,40 @@ var Timer = {
         timer.style.display = "none";
         tempsRestant = "20:00";
         buttonActiveCanvas.textContent = "Reserver";
+        this.isOn = false;
     },
 };
 
-
 var Reservation = {
+    initReservatation: function() {
+        buttonReserve.style.display = "none";
+        canvas.style.display = "none";
+        nameStationReserved.style.display = "inline";
+        nameStationReserved.textContent = Station.name;
+        sessionStorage.setItem("stationNom", Station.name);
+        bouttonCancel.style.display = "flex";
+        timer.style.display = "flex";
+        rebours.textContent = "20:00";
+        Timer.initTimer(tempsRestant);
+        Signature.erase();
+    },
 
-    initReservation: function(station) {
-        sessionStorage.setItem("name", station.name)
-        sessionStorage.setItem("time", timeLeft);
-        
-}
+    stopReservation: function() {
+        sessionStorage.clear();
+        Timer.resetTimer();
+        bouttonCancel.style.display = "none";
+    }
+};
+
+if(typeof sessionStorage!='undefined') {
+  if('time' in sessionStorage) {
+    var tempsRestant = sessionStorage.time;
+    Timer.initTimer(tempsRestant);
+    bouttonCancel.style.display = "flex";
+    timer.style.display = "flex";
+  } else {
+    tempsRestant = "20:00";
+  }
+} else {
+  alert("sessionStorage n'est pas supporté");
+};

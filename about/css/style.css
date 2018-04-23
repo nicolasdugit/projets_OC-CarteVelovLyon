@@ -90,7 +90,7 @@ nav a:hover {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	height: 600px;
+	height: 800px;
 	background-color: white;
 	display: flex;
 
@@ -107,8 +107,8 @@ nav a:hover {
 }
 .figcaption-diapo {
 	position: absolute;
-	bottom: 50px;
-	left: 120px;
+	bottom: 150px;
+	left: 130px;
 	width: 30%;
 	height: 300px;
 	border-radius: 5px;
@@ -122,7 +122,7 @@ nav a:hover {
 }
 .slider-button {
 	position: relative;
-	top: -350px;
+	top: -460px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -226,6 +226,7 @@ iframe{
 }
 .signature {
 	/*position: relative;*/
+	display: none;
 	max-width: 300px;
 	border: 1px solid black;
 	background-color: white;
@@ -259,35 +260,42 @@ iframe{
 }
 
 /*-------------------------------------------*/
-/*------------------FOOTER-------------------*/
+/*------------------TIMER-------------------*/
 /*-------------------------------------------*/
 .timer-reservation {
 	height: 100px;
 	width: 100%;
+
 	position: fixed;
 	bottom: 0;
 	
 	display: flex;
 	align-items: center;
-
-	background-color: rgb(4,0,4);
-	color: rgb(52,56,56)
-}
-.timer {
-	margin: auto;
-	width: 50%;
-	height: 40px;
-	
-	display: none;
-	align-items: center;
 	justify-content: center;
-
-	border-radius: 0 10px 0 10px;
-
-	background-color: rgb(65,61,61);
-	text-align: center;
+	font-size: 1.5em;
+	background-color: rgb(4,0,4);
 	color: white;
 }
+.timer {
+	display: none;
+	border-radius: 0 10px 0 10px;
+	color: white;
+	margin-right: 20px;
+	padding: 10px 20px;
+}
+.bouton-annuler{
+	display: none;
+	padding: 10px 20px;
+	border-radius: 20px;
+	background-color: rgba(260,2, 60, 0.7);
+	cursor: pointer;
+	margin-left: 20px;
+}
+.bouton-annuler:hover {
+	background-color: rgba(260,2, 60, 0.5);
+}
+
+
 /*-------------------------------------------*/
 /*---------------MEDIA QUERIES---------------*/
 /*-------------------------------------------*/
@@ -319,6 +327,7 @@ iframe{
 		margin: 0 auto;
 	}
 	.map {
+		width: 100%;
 		margin-bottom: 20px;
 		margin-top: 20px;
 	}
