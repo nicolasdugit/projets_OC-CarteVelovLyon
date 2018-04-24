@@ -13,8 +13,6 @@ var ImageDiaporama = {
 		this.description = description;
 	}
 };
-
-
 //CREATION DE L'OBJET DIAPORAMA
 var Diaporama = {
 	// initialise le diaporama

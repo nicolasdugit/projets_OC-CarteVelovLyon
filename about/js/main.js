@@ -50,15 +50,17 @@ ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3
 Station.reservedStation();
 
 buttonActiveCanvas.addEventListener("click", function () {
-    Signature.erase();
+    // Signature.erase();
     canvas.style.display = "flex";
     buttonActiveCanvas.style.display = "none";
     if (Timer.isOn) {
         Reservation.stopReservation();
     }
 });
+
+startup();
 // CREATION DE L'ESPACE SIGNATURE NOMME CANVAS AVEC L'OBJET PAINT
-Signature.initPaint(canvas);
+Signature.initSignature(canvas);
 
 canvas.addEventListener("mousedown", function (e) {
 	painting = true;
@@ -85,7 +87,7 @@ buttonReserve.addEventListener("click", function () {
 
 bouttonCancel.addEventListener("click", function() {
     Reservation.stopReservation();
-})
+});
 
 
 

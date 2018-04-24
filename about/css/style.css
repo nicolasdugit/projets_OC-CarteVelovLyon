@@ -225,9 +225,7 @@ iframe{
 	padding: 0 5px;
 }
 .signature {
-	/*position: relative;*/
 	display: none;
-	max-width: 300px;
 	border: 1px solid black;
 	background-color: white;
 	margin-bottom: 20px;

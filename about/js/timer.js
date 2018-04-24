@@ -13,7 +13,7 @@ var Timer = {
     },
     onTimer: function () {
         if (min === 0 && sec === 0 ) {
-            resetCompteur();
+            Reservation.stopReservation();
             divInformation.style.display = "none";
         } else if (min >= 0) {
             if (sec === 0 ) {
