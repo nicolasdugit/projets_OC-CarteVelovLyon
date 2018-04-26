@@ -39,55 +39,110 @@ document.onkeydown = function handleKeyDown(e){
 	};
 };
 
+// CREATION DE LA CARTE VELOV AVEC L'OBJET CARTE
+var mapVelov = Object.create(Carte);
+
 // APPEL DE L'API JCDECAUX
 ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 	allStation = JSON.parse(reponse);
     allStation.forEach( function(station) {
-    	Carte.initMarker(station);
+    	// Mise en place de tous les markers sur la carte
+    	mapVelov.initMarker(station);
 	});
-    Carte.initClustering();
+	//Regroupement des markers
+    mapVelov.initClustering();
 });
-Station.reservedStation();
 
-buttonActiveCanvas.addEventListener("click", function () {
-    // Signature.erase();
+
+buttonConfirme.addEventListener("click", function () {
     canvas.style.display = "flex";
-    buttonActiveCanvas.style.display = "none";
-    if (Timer.isOn) {
-        Reservation.stopReservation();
-    }
+    buttonConfirme.style.display = "none";
 });
 
-startup();
-// CREATION DE L'ESPACE SIGNATURE NOMME CANVAS AVEC L'OBJET PAINT
-Signature.initSignature(canvas);
+buttonNewReservation.addEventListener("click", function () {
+
+	if(typeof sessionStorage!='undefined') {
+  				newReservation.stopReservation();
+  				sessionStorage.setItem("nomStation", nameStation.textContent.split(" : ")[1]);
+			if('time' in sessionStorage) {
+  				bouttonCancel.style.display = "none";
+  				timer.style.display = "none";
+  			}
+		} else {
+  			alert("sessionStorage n'est pas supporté");
+		}
+
+	canvas.style.display = "flex";
+	buttonNewReservation.style.display = "none";
+	bouttonCancel.style.display = "none";
+	timer.style.display = "none";
+})
+// CREATION DE L'ESPACE SIGNATURE AVEC L'OBJET CANVAS
+var espaceSignature = Object.create(Canvas);
+espaceSignature.initCanvas(canvas);
 
 canvas.addEventListener("mousedown", function (e) {
 	painting = true;
 	cursorX = (e.pageX - this.offsetLeft) ;
 	cursorY = (e.pageY - this.offsetTop);
-	Signature.startDraw();
+	espaceSignature.startDraw();
 });
 
 canvas.addEventListener("mousemove", function (e) {
 	if (painting === true) {
-		cursorX = (e.pageX - this.offsetLeft) ;
+		cursorX = (e.pageX - this.offsetLeft);
 		cursorY = (e.pageY - this.offsetTop);
-		Signature.draw();
+		espaceSignature.draw();
 	}
 });
 
 canvas.addEventListener("mouseup", function () {
-	Signature.stopDraw();
+	espaceSignature.stopDraw();
+	buttonReserve.style.display = "flex"; 
+	buttonErase.style.display = "flex";
+});
+
+buttonErase.addEventListener("click", function () {
+	espaceSignature.erase();
+	buttonReserve.style.display = "none";
+	buttonErase.style.display = "none";
 });
 
 buttonReserve.addEventListener("click", function () {
-    Reservation.initReservatation();
+	// CREATION D'UNE NOUVELLE RESERVATION
+	newReservation = Object.create(Reservation);
+    newReservation.initReservatation("20:00", sessionStorage.getItem("nomStation"));
+    // ON SUPPRIME L'ESPACE SIGNATURE, LE CANVAS ET LE BOUTON
+    espaceSignature.erase();
+    buttonReserve.style.display = "none";
+    buttonErase.style.display = "none";
+    canvas.style.display = "none";
+    rebours.textContent = "20:00"; 	
+
+	buttonConfirme.style.display = "none";
+	canvas.style.display = "none";
+	bouttonCancel.style.display = "flex";
+	timer.style.display = "flex";
+
 });
 
 bouttonCancel.addEventListener("click", function() {
-    Reservation.stopReservation();
+	newReservation.stopReservation();
+	bouttonCancel.style.display = "none";
+	timer.style.display = "none";
 });
 
+if(typeof sessionStorage!='undefined') {
+	if('time' in sessionStorage) {
+		buttonConfirme.style.display = "none";
+		timer.style.display = "flex";
+		bouttonCancel.style.display = "flex";
+		newReservation = Object.create(Reservation);
+    	newReservation.initReservatation(sessionStorage.getItem("time"), sessionStorage.getItem("nomStation"));
 
-
+    } else {
+		timer.style.display = "none";
+    }
+} else {
+	alert("sessionStorage n'est pas supporté");
+};

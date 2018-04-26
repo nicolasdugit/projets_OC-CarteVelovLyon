@@ -1,12 +1,8 @@
-var buttonActiveCanvas = document.getElementById("bouton-resa"); 
 var canvas = document.getElementById("signature");
-var buttonReserve = document.getElementById("bouton-valider");
 
+var Canvas = {
 
-var Signature = {
-	// ongoingTouches : [],
-
-	initSignature: function (canvas) {
+	initCanvas: function (canvas) {
 		context = canvas.getContext("2d");
 		painting = false;
 		/*canvas.addEventListener("touchstart", this.handleStart, false);
@@ -27,16 +23,29 @@ var Signature = {
 	},
 	stopDraw: function () {
 		painting = false;
-		buttonReserve.style.display = "flex";
 	},
 	erase: function () {
 		context.clearRect(0,0, 400 , 200);
 	},
+
+
+	// ongoingTouchIndexById: function (idToFind) {
+	// 	for (var i=0; i<this.ongoingTouches.length; i++) {
+ //        	var id = this.ongoingTouches[i].identifier;
+ //        	if (id == idToFind) {
+ //          		return i;
+ //          	}
+ //        }
+ //      	return -1;    // not found
+	// },
+
+
 };
 
-
-
     var ongoingTouches = new Array;
+
+
+
     function ongoingTouchIndexById(idToFind) {
       for (var i=0; i<ongoingTouches.length; i++) {
         var id = ongoingTouches[i].identifier;

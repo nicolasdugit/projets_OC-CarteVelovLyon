@@ -245,7 +245,7 @@ iframe{
 	font-weight: bold;
 	text-transform: uppercase;
 	padding: 10px;
-	margin: 0 0 20px 0;
+	margin: 0 10px 0 20px ;
 	cursor: pointer;
 }
 .bouton-resa:hover {
@@ -255,6 +255,10 @@ iframe{
 .bouton-resa:active {
 	background-color: rgb(4,0,4);
 	border-style: inset;
+}
+
+.espace-bouton {
+	display: flex;
 }
 
 /*-------------------------------------------*/
