@@ -1,15 +1,11 @@
 var canvas = document.getElementById("signature");
 
 var Canvas = {
+	ongoingTouches: [],
 
 	initCanvas: function (canvas) {
 		context = canvas.getContext("2d");
 		painting = false;
-		/*canvas.addEventListener("touchstart", this.handleStart, false);
-		canvas.addEventListener("touchend", this.handleEnd, false);
-		canvas.addEventListener("touchcancel", this.handleCancel, false);
-  		canvas.addEventListener("touchleave", this.handleEnd, false);
-  		canvas.addEventListener("touchmove", this.handleMove, false);*/
 	},
 	startDraw: function () {
 		context.beginPath();
@@ -28,21 +24,100 @@ var Canvas = {
 		context.clearRect(0,0, 400 , 200);
 	},
 
+	ongoingTouchIndexById: function (idToFind) {
+		for (var i=0; i<this.ongoingTouches.length; i++) {
+        	var id = this.ongoingTouches[i].identifier;
+        	if (id == idToFind) {
+          		return i;
+          	}
+        }
+      	return -1;    // not found
+	},
+	
+	handleStart: function(e) {
+		// e.preventDefault();
+		
+		var touches = e.changedTouches;
+		// alert(touches);
+		for (var i=0; i<touches.length; i++) {
+			this.ongoingTouches.push(touches[i]);
+		    var color = "black";
+		    context.fillStyle = color;
+		    context.fillRect(touches[i].pageX-2-canvas.offsetLeft, touches[i].pageY-2-canvas.offsetTop, 4, 4);
+		}		
+	},
 
-	// ongoingTouchIndexById: function (idToFind) {
-	// 	for (var i=0; i<this.ongoingTouches.length; i++) {
- //        	var id = this.ongoingTouches[i].identifier;
- //        	if (id == idToFind) {
- //          		return i;
- //          	}
- //        }
- //      	return -1;    // not found
-	// },
+	handleMove:function(e) {
+		// e.preventDefault();
+		var touches = e.changedTouches;
+
+		context.lineWidth = 4;
+            
+    	for (var i=0; i<touches.length; i++) {
+        	var color = "black";
+        	var idx = this.ongoingTouchIndexById(touches[i].identifier);
+
+        	context.fillStyle = color;
+        	context.beginPath();
+       		context.moveTo(this.ongoingTouches[idx].pageX-canvas.offsetLeft, this.ongoingTouches[idx].pageY-canvas.offsetTop);
+       		context.lineTo(touches[i].pageX-canvas.offsetLeft, touches[i].pageY-canvas.offsetTop);
+        	context.closePath();
+        	context.stroke();
+        	this.ongoingTouches.splice(idx, 1, touches[i]);  // swap in the new touch record
+      }
+	},
+
+	handleEnd: function (e) {
+		// e.preventDefault();
+		var touches = e.changedTouches;
+      
+      context.lineWidth = 4;
+            
+      for (var i=0; i<touches.length; i++) {
+        var color = "black";
+        var idx = this.ongoingTouchIndexById(touches[i].identifier);
+        
+        context.fillStyle = color;
+        context.beginPath();
+        context.moveTo(this.ongoingTouches[i].pageX-canvas.offsetLeft, this.ongoingTouches[i].pageY-canvas.offsetTop);
+        context.lineTo(touches[i].pageX-canvas.offsetLeft, touches[i].pageY-canvas.offsetTop);
+        this.ongoingTouches.splice(i, 1);  // remove it; we're done
+      }
+
+      buttonReserve.style.display = "flex";
+	},
+
+	handleCancel:function (e) {
+      var touches = e.changedTouches;
+      
+      for (var i=0; i<touches.length; i++) {
+        this.ongoingTouches.splice(i, 1);  // remove it; we're done
+      }
+	}
 
 
 };
 
-    var ongoingTouches = new Array;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* var ongoingTouches = new Array;
 
 
 
@@ -131,4 +206,4 @@ var Canvas = {
       canvas.addEventListener("touchcancel", handleCancel, false);
       canvas.addEventListener("touchleave", handleEnd, false);
       canvas.addEventListener("touchmove", handleMove, false);
-    }
+    }*/

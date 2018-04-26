@@ -81,6 +81,8 @@ buttonNewReservation.addEventListener("click", function () {
 var espaceSignature = Object.create(Canvas);
 espaceSignature.initCanvas(canvas);
 
+// startup()
+
 canvas.addEventListener("mousedown", function (e) {
 	painting = true;
 	cursorX = (e.pageX - this.offsetLeft) ;
@@ -101,6 +103,51 @@ canvas.addEventListener("mouseup", function () {
 	buttonReserve.style.display = "flex"; 
 	buttonErase.style.display = "flex";
 });
+
+
+var espaceSignatureTouch = Object.create(Canvas);
+espaceSignatureTouch.initCanvas(canvas);
+
+canvas.addEventListener("touchstart", function(e) {
+	e.preventDefault();
+	espaceSignatureTouch.handleStart(e);
+
+});
+
+canvas.addEventListener("touchend", function(e) {
+	e.preventDefault();
+	espaceSignatureTouch.handleEnd(e);
+});
+canvas.addEventListener("touchcancel", function(e) {
+	e.preventDefault();
+	espaceSignatureTouch.handleCancel(e);
+});
+canvas.addEventListener("touchleave", function(e) {
+	e.preventDefault();
+	espaceSignatureTouch.handleEnd(e);
+});
+canvas.addEventListener("touchmove", function(e) {
+	e.preventDefault();
+	espaceSignatureTouch.handleMove(e);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 buttonErase.addEventListener("click", function () {
 	espaceSignature.erase();
