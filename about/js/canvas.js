@@ -38,7 +38,6 @@ var Canvas = {
 		e.preventDefault();
 		
 		var touches = e.changedTouches;
-		// alert(touches);
 		for (var i=0; i<touches.length; i++) {
 			this.ongoingTouches.push(touches[i]);
 		    var color = "black";

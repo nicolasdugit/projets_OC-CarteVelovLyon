@@ -57,10 +57,10 @@ ajaxGet("https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=f4d8791a3
 buttonConfirme.addEventListener("click", function () {
     canvas.style.display = "flex";
     buttonConfirme.style.display = "none";
+    sessionStorage.setItem("nomStation", stationTitle.textContent.split(" : ")[1]);
 });
 
 buttonNewReservation.addEventListener("click", function () {
-
 	if(typeof sessionStorage!='undefined') {
   				newReservation.stopReservation();
   				sessionStorage.setItem("nomStation", stationTitle.textContent.split(" : ")[1]);
@@ -80,8 +80,6 @@ buttonNewReservation.addEventListener("click", function () {
 // CREATION DE L'ESPACE SIGNATURE AVEC L'OBJET CANVAS
 var espaceSignature = Object.create(Canvas);
 espaceSignature.initCanvas(canvas);
-
-// startup()
 
 canvas.addEventListener("mousedown", function (e) {
 	painting = true;
@@ -103,10 +101,6 @@ canvas.addEventListener("mouseup", function () {
 	buttonReserve.style.display = "flex"; 
 	buttonErase.style.display = "flex";
 });
-
-
-/*var espaceSignatureTouch = Object.create(Canvas);
-espaceSignatureTouch.initCanvas(canvas);*/
 
 canvas.addEventListener("touchstart", function(e) {
 	e.preventDefault();
@@ -134,22 +128,6 @@ canvas.addEventListener("touchmove", function(e) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 buttonErase.addEventListener("click", function () {
 	espaceSignature.erase();
 	buttonReserve.style.display = "none";
@@ -165,7 +143,7 @@ buttonReserve.addEventListener("click", function () {
     buttonReserve.style.display = "none";
     buttonErase.style.display = "none";
     canvas.style.display = "none";
-    rebours.textContent = "20:00"; 	
+    rebours.textContent = newReservation.time; 	
 
 	buttonConfirme.style.display = "none";
 	canvas.style.display = "none";
@@ -176,6 +154,7 @@ buttonReserve.addEventListener("click", function () {
 
 bouttonCancel.addEventListener("click", function() {
 	newReservation.stopReservation();
+	delete(newReservation);
 	bouttonCancel.style.display = "none";
 	timer.style.display = "none";
 });
@@ -194,3 +173,4 @@ if(typeof sessionStorage!='undefined') {
 } else {
 	alert("sessionStorage n'est pas supporté");
 };
+

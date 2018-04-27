@@ -25,18 +25,6 @@ var Station = {
 		}
 		this.availableStand = station.available_bike_stands;
 		this.availableBike = station.available_bikes;
-
-		if(typeof sessionStorage!='undefined') {
-			if('time' in sessionStorage) {
-				if(sessionStorage.getItem("nomStation") === this.name) {
-					this.availableBike = station.available_bikes - 1;
-				}
-		    } else {
-				sessionStorage.setItem("nomStation", this.name)
-		    }
-		} else {
-			alert("sessionStorage n'est pas supporté");
-		};
 	},
 	//FONCTION QUI AFFICHE LES INFOS D'UNE STATION
 	decrireStation: function() {
