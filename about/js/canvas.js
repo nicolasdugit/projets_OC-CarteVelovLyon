@@ -35,7 +35,7 @@ var Canvas = {
 	},
 	
 	handleStart: function(e) {
-		// e.preventDefault();
+		e.preventDefault();
 		
 		var touches = e.changedTouches;
 		// alert(touches);
@@ -48,7 +48,7 @@ var Canvas = {
 	},
 
 	handleMove:function(e) {
-		// e.preventDefault();
+		e.preventDefault();
 		var touches = e.changedTouches;
 
 		context.lineWidth = 4;
@@ -68,7 +68,7 @@ var Canvas = {
 	},
 
 	handleEnd: function (e) {
-		// e.preventDefault();
+		e.preventDefault();
 		var touches = e.changedTouches;
       
       context.lineWidth = 4;
@@ -84,18 +84,14 @@ var Canvas = {
         this.ongoingTouches.splice(i, 1);  // remove it; we're done
       }
 
-      buttonReserve.style.display = "flex";
 	},
 
 	handleCancel:function (e) {
       var touches = e.changedTouches;
-      
       for (var i=0; i<touches.length; i++) {
         this.ongoingTouches.splice(i, 1);  // remove it; we're done
       }
 	}
-
-
 };
 
 

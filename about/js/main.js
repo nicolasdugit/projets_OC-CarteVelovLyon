@@ -63,7 +63,7 @@ buttonNewReservation.addEventListener("click", function () {
 
 	if(typeof sessionStorage!='undefined') {
   				newReservation.stopReservation();
-  				sessionStorage.setItem("nomStation", nameStation.textContent.split(" : ")[1]);
+  				sessionStorage.setItem("nomStation", stationTitle.textContent.split(" : ")[1]);
 			if('time' in sessionStorage) {
   				bouttonCancel.style.display = "none";
   				timer.style.display = "none";
@@ -105,30 +105,31 @@ canvas.addEventListener("mouseup", function () {
 });
 
 
-var espaceSignatureTouch = Object.create(Canvas);
-espaceSignatureTouch.initCanvas(canvas);
+/*var espaceSignatureTouch = Object.create(Canvas);
+espaceSignatureTouch.initCanvas(canvas);*/
 
 canvas.addEventListener("touchstart", function(e) {
 	e.preventDefault();
-	espaceSignatureTouch.handleStart(e);
-
+	espaceSignature.handleStart(e);
 });
 
 canvas.addEventListener("touchend", function(e) {
 	e.preventDefault();
-	espaceSignatureTouch.handleEnd(e);
+	espaceSignature.handleEnd(e);
+    buttonReserve.style.display = "flex";
+    buttonErase.style.display = "flex";
 });
 canvas.addEventListener("touchcancel", function(e) {
 	e.preventDefault();
-	espaceSignatureTouch.handleCancel(e);
+	espaceSignature.handleCancel(e);
 });
 canvas.addEventListener("touchleave", function(e) {
 	e.preventDefault();
-	espaceSignatureTouch.handleEnd(e);
+	espaceSignature.handleEnd(e);
 });
 canvas.addEventListener("touchmove", function(e) {
 	e.preventDefault();
-	espaceSignatureTouch.handleMove(e);
+	espaceSignature.handleMove(e);
 });
 
 
