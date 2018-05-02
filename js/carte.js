@@ -14,11 +14,11 @@ var Carte = {
 	initMarker: function(station) {
 		// Icone en fonction de l'ouverture ou non de la station
 		if (station.status === "OPEN" && station.available_bikes > 0) {
-			this.icon = "about/images/pin-open.png";
+			this.icon = "images/pin-open.png";
 		} else if (station.status === "OPEN" && station.available_bikes === 0) {
-			this.icon = "about/images/pin-close.png";
+			this.icon = "images/pin-close.png";
 		} else {
-			this.icon = "about/images/pin-work.png";
+			this.icon = "images/pin-work.png";
 		}
 		// creation du marker googlemap 
 		marker = new google.maps.Marker({
@@ -46,7 +46,7 @@ var Carte = {
 	// fontion qui regroupe les markers
 	initClustering: function () {
 		markerCluster = new MarkerClusterer(map, this.markers,
-        {imagePath: 'about/images/m'});
+        {imagePath: 'images/m'});
 	}
 };
 
