@@ -1,5 +1,3 @@
-var carteVelov = document.getElementById("map");
-
 //CREATION OBJET CARTE AVEC ZOOM SUR LYON ET MISE EN PLACE DES MARKERS DES STATIONS VELOV
 var Carte = {
 	lyon: {lat: 45.76, lng: 4.85},
@@ -32,7 +30,7 @@ var Carte = {
 		});
 		// ajout d'un evenement au click sur le marker
 		marker.addListener("click", function() { 
-			window.scroll(0, 2000);
+			stationTitle.scrollIntoView({behavior: "smooth", block: "start"});
 			// On interroge JCDecaux pour recuperer les infos d'un station en fonction de son numero
 			ajaxGet("https://api.jcdecaux.com/vls/v1/stations/" + this.idStation + "?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 				// CREATION D'UNE STATION VELOV AVEC L'OBJET STATION

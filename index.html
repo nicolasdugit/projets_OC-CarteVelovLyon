@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
@@ -15,13 +15,13 @@
 
 </head>
 
-<body >
+<body>
 	<header>
 		<h1>RésaVélo'V</h1>
 		<nav>
 			<ul>
-				<li><a href="#">Comment ca marche ?</a></li>
-				<li><a href="#reservation">Reserver une station</a></li>
+				<li id="to-home">Comment ca marche ?</li>
+				<li id="to-reservation">Reserver une station</li>
 			</ul>
 		</nav>
 	</header>
@@ -30,18 +30,14 @@
 
 		<!-- SECTION INSTRUCTION -->
 		<section id="instruction" class="instruction">
-			<div id="slider" class="slider">
-				<div id="carrousel" class="carrousel">
-					<figure id="figure-diapo" class="figure-diapo">
+				<figure id="slider" class="slider">
 						<img id="image-diapo"  class="image-diapo" src="" alt="">
 						<figcaption id="figcaption-diapo" class="figcaption-diapo"></figcaption>
-					</figure>
-				</div>
+				</figure>
 				<div id="slider-button" class="slider-button">
 					<div id="button-back" class="button-back"><i class="fas fa-chevron-left fa-2x"></i></div>
 					<div id="button-forward" class="button-forward"><i class="fas fa-chevron-right fa-2x"></i></div>
 				</div>
-			</div>
 		</section>
 
 		<!-- SECTION RESERVATION -->
@@ -54,29 +50,26 @@
 				<h2>INFORMATION SUR LA STATION</h2>
 				<h3><span id="station-titre" class="station-titre"></span></h3>
 				<span id="station-adresse" class="station-adresse"></span>
-				<p class="para-info"><!-- <span id="station-nom" class="station-nom"></span><br><br> -->
+				<p class="para-info">
 				<span id="station-ouverture" class="station-ouverture"></span><br><br>
 				<span id="station-velo-dispo" class="station-velo-dispo"></span><br><br>
 				<span id="station-emplacement-dispo" class="station-emplacement-dispo"></span>
 				</p> 
 
 				<div id="bouton-confirme" class="bouton-resa"><p>Confirmez</p></div>
-				<div id="bouton-nouvelle-resa" class="bouton-resa">Nouvelle Réservation</div>
 			
-				<canvas id="signature" class="signature" width="400" height="200">Votre navigateur ne vous permet pas d'effectuer une réservation sur notre site.</canvas>
+				<canvas id="signature" class="signature" width="350" height="200">Votre navigateur ne vous permet pas d'effectuer une réservation sur notre site.</canvas>
 				<div class="espace-bouton">
 					<div id="bouton-valider" class="bouton-resa"><p>Réserver</p></div>
 					<div id="bouton-efface" class="bouton-resa"><p>Effacer</p></div>
 				</div>
 			</div>
-				
 		</section>
 	</div>
 
 	<section id="timer-reservation" class="timer-reservation">
 		<div id="timer" class="timer">
-			<p>Un vélo réservé à la station <span id="station-reserve" class="station-reserve"></span> pour <span id ="rebours"></span> min
-			</p>
+			<p>Un vélo réservé à la station <span id="station-reserve" class="station-reserve"></span> pour <span id ="rebours"></span> min</p>
 		</div>
 		<div id="bouton-annuler" class="bouton-annuler">
 			Annuler
@@ -87,11 +80,13 @@
 	<script type="text/javascript" src="about/js/slider.js"></script>
 	<script type="text/javascript" src="about/js/carte.js"></script>
 	<script type="text/javascript" src="about/js/station.js"></script>
+	<!-- <script type="text/javascript" src="about/js/bouton.js"></script> -->
 	<script type="text/javascript" src="about/js/canvas.js"></script>
     <script type="text/javascript" src="about/js/timer.js"></script>
     <script type="text/javascript" src="about/js/reservation.js"></script>
 	<script type="text/javascript" src="about/js/markerclusterer.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqVRudFf3jl7oDcgK1qF9MCZlNrkKOJEA&callback=mapVelov.initCarte"></script>
 	<script type="text/javascript" src="about/js/main.js"></script>
+
 </body>
 </html>

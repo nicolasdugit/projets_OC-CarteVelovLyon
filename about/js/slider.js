@@ -1,9 +1,3 @@
-// RECUPERATION DES ELEMENT DU DOM NECESSAIRES
-var buttonBack = document.getElementById("button-back");
-var buttonForward = document.getElementById("button-forward");
-var imageDiapo = document.getElementById("image-diapo");
-var figcationDiapo = document.getElementById("figcaption-diapo")
-
 // CREATION DE L'OBJET IMAGE
 var ImageDiaporama = {
 // initialise l'image
