@@ -6,7 +6,6 @@ var Canvas = {
 		context.fillText("Signez ici", 20, 20);
 		painting = false;
 	},
-
 	// FONCTIONS CONCERNANT LA SIGNATURE A LA SOURIS
 	startDraw: function () {
 		context.beginPath();
@@ -24,7 +23,6 @@ var Canvas = {
 	erase: function () {
 		context.clearRect(0,0, 350 , 200);
 	},
-	
 	// FONCTIONS CONCERNANT LA SIGNATURE AU TOUCHÉ
 	ongoingTouches: [], // tableau qui regroupe les touch
 	ongoingTouchIndexById: function (idToFind) {
