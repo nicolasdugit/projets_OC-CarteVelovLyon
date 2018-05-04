@@ -40,6 +40,5 @@ var Diaporama = {
 		imageDiapo.src = this.tabImages[this.index].src;
 		imageDiapo.alt = this.tabImages[this.index].alt;
 		figcationDiapo.textContent = this.tabImages[this.index].description;
-	},
+	}
 };
-

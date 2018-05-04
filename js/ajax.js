@@ -3,7 +3,7 @@
 function ajaxGet(url,callback) {
 	// Création d'une requête HTTP
 	var req = new XMLHttpRequest();
-	// Requête HTTP GET asynchrone vers le fichier langages.txt publié localement
+	// Requête HTTP GET asynchrone
 	req.open("GET", url);
 	//Gestion de l'évènement indiquant la fin de la requete
 	req.addEventListener("load", function () {
@@ -19,7 +19,6 @@ function ajaxGet(url,callback) {
 		// La requete n'a pas réussi à atteindre le serveur
 		console.error("Erreur réseau avec l'URL " + url);
 	});
-
 	// Envoi de la requête
 	req.send(null);
 }
