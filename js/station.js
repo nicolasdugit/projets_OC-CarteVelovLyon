@@ -11,7 +11,7 @@ var Station = {
 		}
 		this.availableStand = station.available_bike_stands;
 		this.availableBike = station.available_bikes;
-
+		// Si reservation en cours, alors un vélo en moins dans la station
 		if(typeof sessionStorage!='undefined') {
 			if('time' in sessionStorage) {
 				if(sessionStorage.getItem("nomStation") === this.name) {
@@ -51,5 +51,5 @@ var Station = {
 		statusStation.textContent = "Cette Station est actuellement : " + this.status;
 		availableBike.textContent = "Nombre de vélos disponibles : " + this.availableBike;
 		availableStand.textContent = "Emplacements Vides : " + this.availableStand ;
-	},
+	}
 };
