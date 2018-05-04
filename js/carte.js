@@ -1,16 +1,17 @@
 //CREATION OBJET CARTE AVEC ZOOM SUR LYON ET MISE EN PLACE DES MARKERS DES STATIONS VELOV
 var Carte = {
-	lyon: {lat: 45.76, lng: 4.85},
+	// coordonnées gps ville de lyon
+	city: {lat: 45.76, lng: 4.85},
 	// tableau qui stocke tous les markers
 	markers : [],
 	// Initialise la carte
 	initCarte: function() {
 		map = new google.maps.Map(carteVelov, {
     	zoom: 13,
-    	center: this.lyon
+    	center: this.city
     	});
 	},
-	// Initl=ialise un marker
+	// Initialise un marker
 	initMarker: function(station) {
 		// Icone en fonction de l'ouverture ou non de la station
 		if (station.status === "OPEN" && station.available_bikes > 0) {
@@ -20,7 +21,7 @@ var Carte = {
 		} else {
 			this.icon = "images/pin-work.png";
 		}
-		// creation du marker googlemap 
+		// creation du marker googleMap 
 		marker = new google.maps.Marker({
 			position: station.position,
 			status: station.status,
@@ -31,7 +32,7 @@ var Carte = {
 		// ajout d'un evenement au click sur le marker
 		marker.addListener("click", function() { 
 			stationTitle.scrollIntoView({behavior: "smooth", block: "start"});
-			// On interroge JCDecaux pour recuperer les infos d'un station en fonction de son numero
+			// On interroge JCDecaux pour recuperer les infos d'une station en fonction de son numero
 			ajaxGet("https://api.jcdecaux.com/vls/v1/stations/" + this.idStation + "?contract=Lyon&apiKey=f4d8791a3e0b2c54428fadd020a78f37aa695a47", function(reponse) {
 				// CREATION D'UNE STATION VELOV AVEC L'OBJET STATION
 				infoStation = JSON.parse(reponse);
@@ -43,11 +44,9 @@ var Carte = {
 		// ajout du marker dans le tableau des markers
 		this.markers.push(marker);
 	},
-	// fontion qui regroupe les markers
+	// fonction qui regroupe les markers
 	initClustering: function () {
 		markerCluster = new MarkerClusterer(map, this.markers,
         {imagePath: 'images/m'});
 	}
 };
-
-
