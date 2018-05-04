@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Réservation Vélo'V Lyon</title>
-
 	<meta name="description" content="Application fictive de réservation en ligne de Vélo'V à Lyon">
  	<meta name="author" content="Nicolas Duquesne">
  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +10,7 @@
  	 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   	<!-- CSS -->
  	<link rel="stylesheet" type="text/css" href="css/style.css">
-		
-
 </head>
-
 <body>
 	<header>
 		<h1>RésaVélo'V</h1>
@@ -25,9 +21,7 @@
 			</ul>
 		</nav>
 	</header>
-	
 	<div id="content" class="content">
-
 		<!-- SECTION INSTRUCTION -->
 		<section id="instruction" class="instruction">
 				<figure id="slider" class="slider">
@@ -39,7 +33,6 @@
 					<div id="button-forward" class="button-forward"><i class="fas fa-chevron-right fa-2x"></i></div>
 				</div>
 		</section>
-
 		<!-- SECTION RESERVATION -->
 		<section id="reservation" class="reservation">
 			<!-- MAP -->
@@ -55,9 +48,7 @@
 				<span id="station-velo-dispo" class="station-velo-dispo"></span><br><br>
 				<span id="station-emplacement-dispo" class="station-emplacement-dispo"></span>
 				</p> 
-
 				<div id="bouton-confirme" class="bouton-resa"><p>Confirmez</p></div>
-			
 				<canvas id="signature" class="signature" width="350" height="200">Votre navigateur ne vous permet pas d'effectuer une réservation sur notre site.</canvas>
 				<div class="espace-bouton">
 					<div id="bouton-valider" class="bouton-resa"><p>Réserver</p></div>
@@ -66,7 +57,7 @@
 			</div>
 		</section>
 	</div>
-
+	<!-- SECTION INFO RESERVATION -->
 	<section id="timer-reservation" class="timer-reservation">
 		<div id="timer" class="timer">
 			<p>Un vélo réservé à la station <span id="station-reserve" class="station-reserve"></span> pour <span id ="rebours"></span> min</p>
@@ -75,7 +66,7 @@
 			Annuler
 		</div>
 	</section>
-
+	<!-- SCRIPT JAVASCRIPT -->
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/slider.js"></script>
 	<script type="text/javascript" src="js/carte.js"></script>
@@ -86,6 +77,5 @@
 	<script type="text/javascript" src="js/markerclusterer.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqVRudFf3jl7oDcgK1qF9MCZlNrkKOJEA&callback=mapVelov.initCarte"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-
 </body>
 </html>
