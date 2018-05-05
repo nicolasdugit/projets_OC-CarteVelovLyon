@@ -11,7 +11,7 @@ var Timer = {
         if (min === 0 && sec === 0 ) {
             timer.style.display = "none";
             bouttonCancel.style.display = "none";
-            buttonConfirme.textContent = "Confirmer";
+            buttonConfirme.textContent = "Réserver";
             clearInterval(this.timerId);
             sessionStorage.clear();
         } else if (min >= 0) {

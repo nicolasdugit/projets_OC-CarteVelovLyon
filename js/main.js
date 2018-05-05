@@ -40,7 +40,7 @@ var imagesDiaporama = [];
 var image1 = Object.create(ImageDiaporama);
 image1.initImage("images/diapo1.png","diapo 1", "Bienvenue sur le site de RésaVélo'V, service de location de velo sur la ville de Lyon. Première visite ? Suivez le guide pas à pas. Utilisez les fleches directionnelles pour actionner le diaporama");
 var image2 = Object.create(ImageDiaporama);
-image2.initImage("images/diapo2.png","diapo 2", "Selectionnez votre station Vélo'V. Les marqueurs verts indiquent une station ouverte avec vélo diponible, les rouges une station ouverte mais sans vélo disponible. Les stations fermées sont repérées par une icone travaux. Une fois la station selectionnée, cliquez sur reserver.");
+image2.initImage("images/diapo2.png","diapo 2", "Selectionnez votre station Vélo'V. Les marqueurs verts indiquent une station ouverte avec vélo diponible, les rouges une station ouverte mais sans vélo disponible. Les stations fermées sont repérées par une icone travaux. Une fois la station selectionnée, cliquez sur réserver.");
 var image3 = Object.create(ImageDiaporama);
 image3.initImage("images/diapo3.png","diapo 3", "Vous devez maintenant signer dans la zone de signature pour valider votre réservation."); 
 var image4 = Object.create(ImageDiaporama);
