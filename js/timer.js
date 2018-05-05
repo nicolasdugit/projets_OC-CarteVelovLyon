@@ -1,10 +1,12 @@
 // CREATION D'UN OBJET TIMER
 var Timer = {
+    // initilaisation du timer avec un temps donné
     initTimer: function (time) {
         this.time = time;
         sec = Number(this.time.split(':')[1]);
         min = Number(this.time.split(':')[0]);
     },
+    // timer en marche
     onTimer: function () {
         if (min === 0 && sec === 0 ) {
             timer.style.display = "none";
@@ -25,12 +27,13 @@ var Timer = {
             } else {
                 this.time = min + ":" + sec;
             }
-        sessionStorage.setItem("time", this.time);
-        rebours.textContent = sessionStorage.getItem("time");
+        sessionStorage.setItem("time", this.time); // stockage du temps restant 
+        rebours.textContent = sessionStorage.getItem("time"); // affichage du temps restant
         } 
     },
+    // reset du timer
     resetTimer: function (id) {
         clearInterval(id);
         sessionStorage.clear();
-    },
+    }
 };

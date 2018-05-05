@@ -1,6 +1,6 @@
 //CREATION D'UN OBJET RESERVATION
 var Reservation = {
-    // PASSER EN PARAMETRE TIME ET STATION
+    // initialisation de la réservation avec un temps donné et le nom de la station
     initReservation: function(time, station) {
         this.time = time;
         this.station = station;
@@ -16,6 +16,7 @@ var Reservation = {
         buttonErase.style.display = "none";
         canvas.style.display = "none";
     },
+    // annulation de la réservation en cours
     stopReservation: function() {
         newTimer.resetTimer(timerId);
         // modifications affichages bouton et canvas
