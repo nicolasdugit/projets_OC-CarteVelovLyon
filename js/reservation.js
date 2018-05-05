@@ -9,10 +9,10 @@ var Reservation = {
         timerId = setInterval(newTimer.onTimer, 1000);
         nameStationReserved.textContent = this.station;
         // modifications affichages bouton et canvas
-        buttonConfirme.textContent = "Nouvelle réservation";
+        buttonReserve.textContent = "Nouvelle réservation";
         bouttonCancel.style.display = "flex";
         timer.style.display = "flex";
-        buttonReserve.style.display = "none"; 
+        buttonConfirme.style.display = "none"; 
         buttonErase.style.display = "none";
         canvas.style.display = "none";
     },
@@ -20,8 +20,8 @@ var Reservation = {
     stopReservation: function() {
         newTimer.resetTimer(timerId);
         // modifications affichages bouton et canvas
-        buttonConfirme.style.display = "none";
-        buttonConfirme.textContent = "Réserver";
+        buttonReserve.style.display = "none";
+        buttonReserve.textContent = "Réserver";
         bouttonCancel.style.display = "none";
         timer.style.display = "none";
     }

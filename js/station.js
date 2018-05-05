@@ -26,25 +26,25 @@ var Station = {
 	decrireStation: function() {
 		// FAIRE ICI LES TEST SUR LES DISPO VELO
 		if (this.status === "fermée") {
-			buttonConfirme.style.display = "none";
+			buttonReserve.style.display = "none";
 			availableBike.style.display = "none";
 			availableStand.style.display = "none";
 			statusStation.style.color = "red";
 		} else if (this.availableBike === 0) {
-			buttonConfirme.style.display = "none";
+			buttonReserve.style.display = "none";
 			availableBike.style.display = "inline";
 			availableBike.style.color = "red";
 			availableStand.style.display = "inline";
 			statusStation.style.color = "green";
 		} else {
-			buttonConfirme.style.display = "flex";
+			buttonReserve.style.display = "flex";
 			availableBike.style.display = "inline";
 			availableStand.style.display = "inline";
 			statusStation.style.color = "green";
 			availableBike.style.color = "green";
 		}
 		canvas.style.display = "none";
-		buttonReserve.style.display = "none";
+		buttonConfirme.style.display = "none";
     	buttonErase.style.display = "none";
 		stationTitle.textContent = "STATION : " + this.name;
 		addressStation.textContent = this.address;

@@ -11,8 +11,8 @@ var availableBike = document.getElementById("station-velo-dispo");
 var availableStand = document.getElementById("station-emplacement-dispo");
 var divInformation = document.getElementById("information");
 var nameStationReserved = document.getElementById("station-reserve");
-var buttonConfirme = document.getElementById("bouton-confirme"); 
-var buttonReserve = document.getElementById("bouton-valider");
+var buttonReserve = document.getElementById("bouton-confirme"); 
+var buttonConfirme = document.getElementById("bouton-valider");
 var buttonErase = document.getElementById("bouton-efface");
 var rebours = document.getElementById("rebours");
 var timer = document.getElementById("timer");
@@ -107,7 +107,7 @@ canvas.addEventListener("mousemove", function (e) {
 });
 canvas.addEventListener("mouseup", function () {
 	espaceSignature.stopDraw();
-	buttonReserve.style.display = "flex"; 
+	buttonConfirme.style.display = "flex"; 
 	buttonErase.style.display = "flex";
 });
 canvas.addEventListener("touchstart", function(e) {
@@ -117,9 +117,9 @@ canvas.addEventListener("touchstart", function(e) {
 canvas.addEventListener("touchend", function(e) {
 	e.preventDefault();
 	espaceSignature.handleEnd(e);
-    buttonReserve.style.display = "flex";
+    buttonConfirme.style.display = "flex";
     buttonErase.style.display = "flex";
-    buttonReserve.scrollIntoView({behavior: "smooth"});
+    buttonConfirme.scrollIntoView({behavior: "smooth"});
 });
 canvas.addEventListener("touchcancel", function(e) {
 	e.preventDefault();
@@ -133,22 +133,23 @@ canvas.addEventListener("touchmove", function(e) {
 	e.preventDefault();
 	espaceSignature.handleMove(e);
 });
+// BOUTON QUI EFFACE LA SIGNATURE
 buttonErase.addEventListener("click", function () {
 	espaceSignature.erase();
-	buttonReserve.style.display = "none";
+	buttonConfirme.style.display = "none";
 	buttonErase.style.display = "none";
 });
 // --------------------------------------- //
 // ------------ RESA STATION ------------ //
 // ------------------------------------- //
 // PRE CONFIRMATION RESERVATION AVANT SIGNATURE
-buttonConfirme.addEventListener("click", function () {
+buttonReserve.addEventListener("click", function () {
 	 // Si reservation active
 	if(typeof sessionStorage!='undefined') {
 		if('time' in sessionStorage) {
   			newReservation.stopReservation(); // annulaion reservation en cours
   		} else {
-    		buttonConfirme.style.display = "none"; // Disparition bouton confirmation
+    		buttonReserve.style.display = "none"; // Disparition bouton confirmation
   			}
  	} else {
   		alert("sessionStorage n'est pas supporté");
@@ -158,7 +159,7 @@ buttonConfirme.addEventListener("click", function () {
     canvas.scrollIntoView({behavior: "smooth"}); // Déplacement de l'ecran sur l'espace signature
 });
 // BOUTON VALIDATION DE LA RESERVATION
-buttonReserve.addEventListener("click", function () {
+buttonConfirme.addEventListener("click", function () {
 	// CREATION D'UNE NOUVELLE RESERVATION
 	newReservation = Object.create(Reservation);
     newReservation.initReservation("01:00", sessionStorage.getItem("nomStation"));
