@@ -180,4 +180,3 @@ if(typeof sessionStorage!='undefined') {
 } else {
 	alert("sessionStorage n'est pas supporté");
 };
-
