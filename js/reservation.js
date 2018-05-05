@@ -21,7 +21,7 @@ var Reservation = {
         newTimer.resetTimer(timerId);
         // modifications affichages bouton et canvas
         buttonReserve.style.display = "none";
-        buttonReserve.textContent = "Réserver";
+        buttonReserve.textContent = "Confirmer";
         bouttonCancel.style.display = "none";
         timer.style.display = "none";
     }
